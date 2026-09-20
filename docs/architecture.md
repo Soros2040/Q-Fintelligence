@@ -59,3 +59,7 @@ The default chain constructs local synthetic data when no input or frozen-data o
 ## Integration task
 
 Choose one UI workflow, identify its request schema, worker call, persisted state and output artifact, then compare that artifact with the algorithm CLI schema. Provide a mock example and compatibility test before proposing an integration. See [contributions](contributions.md).
+
+## Quantum representation source paths
+
+E02 uses [fidelity kernels](../algorithm/qf_algorithm/legacy/quantum_features.py) and [anchored regression](../algorithm/qf_algorithm/legacy/run_e02.py). E03 uses the same source's Z/ZZ readouts followed by a [classical graph head](../algorithm/qf_algorithm/legacy/graph_head.py). These paths share some circuit definitions while serving distinct tasks. Read [Case 02](cases/02-representations.md) for equations, selection controls and resource interpretation. The product/agent architecture supports experiment organization; it is evaluated separately from the quantum-method claims.

@@ -1,54 +1,54 @@
 # Q-Fintelligence · 量融智枢
 
-**A research workbench for risk-aware portfolio optimization and adaptive quantum circuits.**
+**Quantum computing and quantum machine learning, studied through transparent financial benchmarks.**
 
-[简体中文](README_zh.md) · [Product](https://qfintelligence.yuxuan.wiki/) · [Research cases](docs/research.md) · [Reproduction](docs/reproduction.md) · [Evidence](evidence/README.md)
+[简体中文](README_zh.md) · [Start learning](docs/research.md) · [Source and architecture](docs/architecture.md) · [Evidence](evidence/README.md) · [Manuscripts](https://github.com/Soros2040/julius-future/tree/main/works)
 
-Q-Fintelligence connects financial information available at a decision time, classical risk estimates, local quantum representations, and constrained portfolio objectives. It combines a Web research workbench with the QF Algorithm 2.1.0 Python source and selected, traceable experimental results.
+Q-Fintelligence studies how quantum representations and circuit choices affect a well-defined task: prediction, constrained optimization, or execution on a noisy device. The repository brings together QF Algorithm 2.1.0, selected historical experiment records, original figures, three worked cases and a supporting research workbench.
 
-This is an ongoing research project with a deployed product entry and archived experiments. Results vary by task: some quantum configurations improve a selected baseline, while stronger classical methods perform better in several comparisons. The published evidence makes those conditions inspectable.
+**Current stage:** source and evidence edition; research continues. Existing experiments contain both favorable and unfavorable comparisons. The [Datawhale preinitiation draft](docs/datawhale-preinitiation.md) organizes a proposed educational collaboration; it is preparation for review. [Validation status](docs/status.md) distinguishes previous checks, archived experiments and outstanding clean-environment validation.
 
-## Architecture at a glance
+## Three research lines
 
-```mermaid
-flowchart TB
-    subgraph Product[Research workbench]
-      direction LR
-      W[Web interface] --> C[Task control] --> R[Workers] --> A[Artifacts]
-    end
-    subgraph Algorithm[Independent algorithm CLI]
-      direction LR
-      D[Data panel] --> M[Risk model] --> P[Portfolio objective] --> Q[Circuit evaluation]
-    end
-    Product ~~~ Algorithm
-```
-
-The workbench and algorithm CLI are separate entry points. Their integration status and source locations are described in [Architecture](docs/architecture.md).
-
-## What you can learn here
-
-- Follow expected returns, covariance and trading costs into an equivalent QUBO/Ising objective.
-- Examine how quantum local features are compared with classical predictors on a shared information set.
-- Trace a six-qubit circuit from ideal simulation to noisy simulation and real-device counts.
-- Study task state, event replay, artifact identity and human approval in a scientific agent workbench.
-
-## Read in three depths
-
-| Time | Start | Outcome |
-|---|---|---|
-| 5 minutes | This page and the [research map](docs/research.md) | Understand the question, contributions and actual results |
-| 30 minutes | Three [worked cases](docs/research.md#worked-cases) and their notebooks | Inspect the equations, comparisons and failure mechanisms |
-| Reproduction session | [Environment and validation guide](docs/reproduction.md) | Run the small offline checks; prepare a supported development environment |
-
-## Project layers
-
-| Layer | Included material | Current status | Next useful contribution |
+| Line | Concrete question | Existing source and evidence | What remains open |
 |---|---|---|---|
-| Product | [Web, control plane, workers and contracts](product/) | Deployed entry; source snapshot included | Verify the documented mock workflow on clean Linux/WSL2 |
-| Algorithm | [QF Algorithm 2.1.0](algorithm/) | Versioned Python/CLI source; synthetic input path | Check the minimal synthetic method chain in a clean environment |
-| Experiments | [E01–E07 and hardware/cloud evidence](evidence/) | Selected archived results, with source hashes | Review one claim against its task, endpoint and comparison |
-| Learning | [Three notebooks](notebooks/) | Small public teaching examples; cleared execution metadata | Improve an explanation while preserving the mathematical contract |
-| Research record | [Architecture](docs/architecture.md), [status](docs/status.md), [contribution scope](docs/contributions.md) | Maintained alongside the source | Document a design tradeoff and its validation |
+| Quantum kernels and local features | Does a quantum representation improve a matched held-out prediction task? | Twelve frozen maps; anchored fidelity features in E02; local observables and a graph head in E03 | Task-aware kernel design, matched capacity and complete search/measurement cost |
+| Quantum constrained optimization | How does a circuit's full distribution compare with exact and classical solutions? | Portfolio → QUBO → Ising derivation; E01 identity checks; E05 QAOA comparisons | Reliable feasible quality, stronger references and scaling beyond small exact problems |
+| Hardware-aware circuit selection | Can a candidate choice retain quality after compilation and noise? | Local proxy example, E06, 1,000 six-qubit hardware circuits and 999 matched cloud records | Generalization across tasks and independent calibration windows |
+
+Financial data give these questions decision times, targets, risk constraints and strong classical references. The quantum methods and their resource/quality tradeoffs are the research focus. The agent/workbench layer supports task organization, human review and artifact management.
+
+## Start with one complete case
+
+| Order | Prerequisites | Worked material | Observable learning outcome |
+|---|---|---|---|
+| 1 | Linear algebra, binary variables | [Objective → QUBO → Ising](docs/cases/01-objective.md), [notebook](notebooks/01_objective_identity.ipynb) | Derive constants and cardinality penalties; read an original six-asset example and sampling distribution |
+| 2 | Inner products, regression, time splits | [Fidelity kernels and local features](docs/cases/02-representations.md), [notebook](notebooks/02_representation_evidence.ipynb) | Distinguish kernel similarity from observable features; follow prediction effects into portfolio endpoints |
+| 3 | Probability, circuits, held-out evaluation | [Candidate selection and hardware transfer](docs/cases/03-hardware.md), [notebook](notebooks/03_hardware_transfer.ipynb) | Interpret a proxy's held-out error, resource costs, distribution distances and feasibility |
+
+Every case connects equations, the actual implementation, original evidence, limitations and a bounded contribution task. The English and Chinese editions carry the same technical substance. [Eight original figures](assets/original/README.md) have file hashes, source-result hashes and execution-mode labels.
+
+![Original calculated and sampled probabilities for one six-qubit demonstration](assets/original/probabilities.png)
+
+*Original archived local demonstration: B01_L0.1, fixed qas_00, gamma 0.6, beta 0.25 and 1,024 local shots. Filled bars are calculated probabilities; outlined bars are sampled frequencies. [Case 01](docs/cases/01-objective.md) explains bit order, feasible mass and conditional quality. This figure describes this demonstration, separately from the hardware study.*
+
+## Read at your own depth
+
+- **Five minutes:** read the three lines above and the evidence table below; choose one question you can explain.
+- **Thirty minutes:** follow one worked case from equation to source and JSON field; check a reading question.
+- **A research contribution:** review a comparison contract, improve a bilingual explanation, or propose a bounded next study using the [contribution record](docs/contributions.md#contribution-record).
+- **A reproduction session:** use the [environment guide](docs/reproduction.md); record runtime, commit, mode and outcomes. Full historical reproduction has archive gaps described in the status page.
+
+## Materials and actual progress
+
+| Module | Public entry | Available now | Next useful contribution |
+|---|---|---|---|
+| Quantum methods | [Algorithm](algorithm/) and [source map](docs/architecture.md) | Versioned Python/CLI, local synthetic path, frozen-map and circuit-selection source | Clean-environment method-chain validation |
+| Research evidence | [E01–E07, hardware/cloud](evidence/) | Selected summaries, per-circuit tables and source identities | Review one task, effect direction, unit and limitation |
+| Learning cases | [Research route](docs/research.md), [original figures](assets/original/README.md) | Three bilingual cases and three companion notebooks | Improve one explanation with an evidence-linked exercise |
+| Supporting workbench | [Product source](product/), [product entry](https://qfintelligence.yuxuan.wiki/) | Web, control plane, workers and contracts | Clean Linux/WSL2 mock installation and adapter review |
+| Research writing | [Julius' future / works](https://github.com/Soros2040/julius-future/tree/main/works) | Central writing and manuscript navigation | Register document version, contribution and supporting evidence |
+| Educational collaboration | [Datawhale preparation](docs/datawhale-preinitiation.md) | Bilingual draft using official initiation fields | Review chapter ownership, schedule and readiness |
 
 ## Selected evidence
 
@@ -66,23 +66,24 @@ The numerical archive below covers experiments recorded on 7–9 September 2026.
 
 See the [evidence guide](evidence/README.md) for sample units, uncertainty, field selection and the distinction between archived and newly executed checks. A device name indicates the platform; the tested circuits here use six qubits.
 
-## First practical step
+## Your first contribution
 
-These two small checks use Python's standard library and make no provider calls:
+Choose one comparison in [Case 02](docs/cases/02-representations.md), open its linked JSON, and record the task, compared methods, effect direction, sample unit, interval and conclusion. Submit an Issue with the exact file/field and a proposed correction or confirmation. A bilingual documentation PR can follow once the scope is agreed. A useful first review does not require a GPU or a quantum-provider account.
 
-```bash
-python examples/bridge_identity.py
-python tools/verify_public_evidence.py
-```
+| Task | Deliverable | Acceptance | Ownership |
+|---|---|---|---|
+| Review E02 kernel features | Issue plus source-linked explanation | Anchors, frozen maps, classical head and local finite-shot scope distinguished | Open; claim in an Issue |
+| Review one original figure | Caption or teaching improvement | File identity, axes, execution mode and inference boundary agree | Open; claim in an Issue |
+| Audit one comparison | [Contribution record](contributions/) | Exact evidence fields, sign, units and uncertainty checked | Open; claim in an Issue |
 
-The first enumerates a synthetic six-asset objective in three representations. The second recomputes selected summary statistics from the public tables. For the workbench and algorithm installation, follow [Reproduction](docs/reproduction.md).
+The [reproduction guide](docs/reproduction.md) provides optional small offline arithmetic examples and installation steps. This documentation revision restores original figures and expands source explanations; it does not add new experiment results.
 
-## Design and contribution
+## Design, collaboration and maintenance
 
-Julius designed the experiments, product architecture and model architecture. Implementation, deployment and experiment execution belong to the project's implementation workflow and are credited separately from those design responsibilities. See [Contribution scope](docs/contributions.md) for how we record individual work and upstream dependencies.
+Julius designed the experiments, product architecture and model architecture. Implementation, deployment and experiment execution are recorded separately through the team's implementation workflow. [Contribution scope](docs/contributions.md) explains individual roles and attribution.
 
-The teaching structure moves from prerequisites to a worked example, an inspectable result and a contribution task. Readers can start with [one evidence review](docs/contributions.md#first-contribution), then use the repository's [contribution guidelines](CONTRIBUTING.md).
+Follow [CONTRIBUTING](CONTRIBUTING.md) for Issue discussion → task claim → branch → PR review → [outcome registration](contributions/). [Maintenance](docs/maintenance.md) covers review responsibilities and handoffs. Source-linked corrections, stronger explanations and careful examination of unfavorable results are all valuable contributions.
 
 ## License and sources
 
-Original code is covered by [MIT](LICENSE). Original documentation is covered by [CC BY-NC-SA 4.0](LICENSE-DOCS.txt). Third-party components retain their licenses; see [Third-party notices](THIRD_PARTY_NOTICES.md). Source market data and complete private execution records are outside this edition; the included selected summaries have their own [data notice](evidence/DATA_NOTICE.md).
+Original code: [MIT](LICENSE). Original documentation and team-original figures: [CC BY-NC-SA 4.0](LICENSE-DOCS.txt). Third-party components retain their licenses in [Third-party notices](THIRD_PARTY_NOTICES.md). Source datasets and complete execution archives remain subject to their original permissions; the selected public records have a [data notice](evidence/DATA_NOTICE.md).

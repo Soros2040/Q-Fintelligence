@@ -1,54 +1,54 @@
 # Q-Fintelligence · 量融智枢
 
-**面向风控增强投资组合优化与量子线路自适应设计的研究工作台。**
+**以可检查的金融基准，研究量子计算与量子机器学习。**
 
-[English](README.md) · [产品入口](https://qfintelligence.yuxuan.wiki/) · [研究案例](docs/research_zh.md) · [复现指南](docs/reproduction_zh.md) · [实验证据](evidence/README_zh.md)
+[English](README.md) · [开始学习](docs/research_zh.md) · [源码与架构](docs/architecture_zh.md) · [证据](evidence/README_zh.md) · [论文与写作](https://github.com/Soros2040/julius-future/tree/main/works)
 
-量融智枢将决策时点可见的金融信息、经典风险估计、局部量子表征与受约束组合目标连接起来。本仓库包含 Web 科研工作台、QF Algorithm 2.1.0 Python 源码以及经过筛选、可以追溯的实验结果。
+量融智枢研究量子表示和线路选择如何影响一个定义清楚的任务：预测、约束优化，或含噪设备上的执行。仓库汇集 QF Algorithm 2.1.0、筛选后的历史实验记录、原始图像、三个完整案例，以及支持研究组织的工作台。
 
-项目处于持续研究阶段，已有云端产品入口和归档实验。结果随任务而变化：部分量子配置改善了某个对照，而更强的经典方法在若干比较中表现更好。公开证据使这些适用条件可以被检查。
+**当前阶段：** 源码与证据公开版，研究持续进行。既有实验包含有利与不利的比较。[Datawhale 预立项草案](docs/datawhale-preinitiation_zh.md)按照官方字段组织拟议的教育协作，处于评审准备阶段。[验证状态](docs/status_zh.md)区分此前检查、历史实验与待完成的干净环境验证。
 
-## 架构概览
+## 三条研究主线
 
-```mermaid
-flowchart TB
-    subgraph Product[研究工作台]
-      direction LR
-      W[网页界面] --> C[任务控制] --> R[工作进程] --> A[成果文件]
-    end
-    subgraph Algorithm[独立算法 CLI]
-      direction LR
-      D[数据面板] --> M[风险模型] --> P[组合目标] --> Q[线路评价]
-    end
-    Product ~~~ Algorithm
-```
-
-工作台与算法 CLI 是两个独立入口，集成状态和源码位置见[架构说明](docs/architecture_zh.md)。
-
-## 可以在这里学到什么
-
-- 将预期收益、协方差与交易成本推导为等价的 QUBO/Ising 目标。
-- 检查量子局部特征如何在共同信息集下与经典预测器比较。
-- 追踪六比特线路从理想模拟、含噪模拟到真实设备计数的变化。
-- 研究科研智能体工作台的任务状态、事件重放、工件身份与人工审批。
-
-## 三种阅读深度
-
-| 时间 | 入口 | 预期收获 |
-|---|---|---|
-| 5 分钟 | 本页和[研究地图](docs/research_zh.md) | 理解问题、贡献及真实结果 |
-| 30 分钟 | 三个[深入案例](docs/research_zh.md#深入案例)及其 Notebook | 检查公式、比较方法和失效机制 |
-| 一次复现实践 | [环境与验证指南](docs/reproduction_zh.md) | 运行小型离线检查，并准备受支持的开发环境 |
-
-## 项目层次
-
-| 层次 | 已有内容 | 当前状态 | 下一项有价值的贡献 |
+| 主线 | 具体问题 | 已有源码与证据 | 仍待研究 |
 |---|---|---|---|
-| 产品 | [Web、控制面、worker 与接口合同](product/) | 云端入口已部署；包含源码快照 | 在干净 Linux/WSL2 环境验证文档中的 mock 流程 |
-| 算法 | [QF Algorithm 2.1.0](algorithm/) | 版本化 Python/CLI 源码；具有合成输入路径 | 在干净环境检查最小合成方法链 |
-| 实验 | [E01–E07 与硬件/云端证据](evidence/) | 筛选后的归档结果，保留来源哈希 | 对照任务、终点与参照对象复核一条表述 |
-| 学习 | [三个 Notebook](notebooks/) | 小型公开教学示例；执行元数据已清理 | 在保持数学定义的前提下改善解释 |
-| 研究记录 | [架构](docs/architecture_zh.md)、[状态](docs/status_zh.md)、[贡献范围](docs/contributions_zh.md) | 与源码同步维护 | 记录一项设计取舍及其验证 |
+| 量子核与局部特征 | 量子表示能否改善匹配的留出预测任务？ | 12 个冻结映射；E02 的锚点保真度特征；E03 的局部可观测量与图预测头 | 任务感知核设计、匹配容量、完整搜索与测量成本 |
+| 量子约束优化 | 线路的完整输出分布与精确解、经典解相比如何？ | 组合 → QUBO → Ising 推导；E01 恒等检查；E05 QAOA 比较 | 可靠可行质量、更强对照与小型可枚举问题以外的扩展 |
+| 硬件感知线路选择 | 候选选择在编译与噪声后能否保持质量？ | 本地代理案例、E06、1,000 条六比特硬件线路与 999 条配对云端记录 | 跨任务与独立校准窗口的泛化 |
+
+金融数据为这些问题提供决策时钟、预测目标、风险约束和强经典对照。研究重点是量子方法及其质量/资源权衡；Agent 与工作台负责组织任务、人工审阅和产物管理。
+
+## 从一个完整案例开始
+
+| 顺序 | 先修知识 | 案例材料 | 可以检查的学习结果 |
+|---|---|---|---|
+| 1 | 线性代数、二元变量 | [目标函数 → QUBO → Ising](docs/cases/01-objective_zh.md)、[Notebook](notebooks/01_objective_identity.ipynb) | 推导常数与基数约束惩罚，解读原始六资产例子与采样分布 |
+| 2 | 内积、回归、时间切分 | [保真度核与局部特征](docs/cases/02-representations_zh.md)、[Notebook](notebooks/02_representation_evidence.ipynb) | 区分核相似性与可观测量特征，将预测效应追踪到组合端点 |
+| 3 | 概率、线路、留出评估 | [候选选择与硬件迁移](docs/cases/03-hardware_zh.md)、[Notebook](notebooks/03_hardware_transfer.ipynb) | 解释代理留出误差、资源成本、分布距离与可行率 |
+
+每个案例都连接公式、实际实现、原始证据、局限和可认领贡献。中英文具有相同技术内容。[8 张原始图](assets/original/README.md)附文件哈希、来源结果哈希与执行模式。
+
+![某六比特本地演示的原始概率与采样频率图](assets/original/probabilities.png)
+
+*原始归档本地演示：B01_L0.1、固定 qas_00、gamma 0.6、beta 0.25、1,024 次本地采样。实心柱是计算概率，空心柱是采样频率。[案例 01](docs/cases/01-objective_zh.md)解释比特顺序、可行概率与条件质量。本图描述该演示，与真实硬件研究分开解释。*
+
+## 按你的时间选择阅读深度
+
+- **五分钟：** 阅读三条主线和下面的证据表，选择一个能够清楚解释的问题。
+- **三十分钟：** 沿一个案例从公式读到源码和 JSON 字段，回答一道阅读检查。
+- **一次研究贡献：** 审核比较契约、改善双语解释，或使用[贡献记录](docs/contributions_zh.md#贡献记录模板)提出范围清晰的下一研究。
+- **一次复现工作：** 按[环境指南](docs/reproduction_zh.md)记录运行时、提交、模式和结果；完整历史复现的资料缺口见状态页。
+
+## 材料与实际进度
+
+| 模块 | 公开入口 | 当前已有 | 下一项有用贡献 |
+|---|---|---|---|
+| 量子方法 | [算法](algorithm/)、[源码地图](docs/architecture_zh.md) | 版本化 Python/CLI、本地合成路径、冻结映射与线路选择源码 | 干净环境中的方法链验证 |
+| 研究证据 | [E01–E07、硬件/云端](evidence/) | 筛选汇总、逐线路表格与来源身份 | 审核一个任务、效应方向、单位和局限 |
+| 学习案例 | [研究路线](docs/research_zh.md)、[原始图](assets/original/README.md) | 3 个双语案例与 3 个配套 Notebook | 为一处解释补充连接证据的练习 |
+| 支撑工作台 | [产品源码](product/)、[产品入口](https://qfintelligence.yuxuan.wiki/) | Web、控制平面、workers 与契约 | 干净 Linux/WSL2 的 mock 安装与适配审阅 |
+| 研究写作 | [Julius' future / works](https://github.com/Soros2040/julius-future/tree/main/works) | 集中论文与写作导航 | 登记文档版本、贡献与支持证据 |
+| 教育协作 | [Datawhale 准备材料](docs/datawhale-preinitiation_zh.md) | 按官方立项字段准备的双语草案 | 审查章节负责人、时间安排与成熟度 |
 
 ## 代表性证据
 
@@ -66,23 +66,24 @@ flowchart TB
 
 [证据导读](evidence/README_zh.md)说明样本单位、不确定性、字段筛选及归档与本轮检查的区别。设备名称表示平台，本文这些实测线路使用六个量子比特。
 
-## 第一次实践
+## 第一次参与
 
-以下两个小型检查只使用 Python 标准库，不调用外部服务：
+选取[案例 02](docs/cases/02-representations_zh.md)中的一个比较，打开链接的 JSON，记录任务、被比较方法、效应方向、样本单位、区间与结论。提交包含精确文件/字段的 Issue，附更正建议或核对确认。讨论范围后可以提交双语文档 PR。第一次有效审阅不需要 GPU 或量子平台账户。
 
-```bash
-python examples/bridge_identity.py
-python tools/verify_public_evidence.py
-```
+| 任务 | 交付 | 验收 | 认领 |
+|---|---|---|---|
+| 审查 E02 核特征 | Issue 与连接源码的解释 | 区分锚点、冻结映射、经典头与本地有限采样范围 | 开放；通过 Issue 认领 |
+| 复核一张原图 | 图注或教学改进 | 文件身份、坐标、执行模式与推断边界一致 | 开放；通过 Issue 认领 |
+| 审核一个比较 | [贡献记录](contributions/) | 精确证据字段、符号、单位与不确定性核对完成 | 开放；通过 Issue 认领 |
 
-第一个将合成六资产目标用三种表达逐态枚举；第二个从公开表格重新计算选定汇总值。工作台和算法安装请使用[复现指南](docs/reproduction_zh.md)。
+[复现指南](docs/reproduction_zh.md)提供可选的小型离线算术例子和安装步骤。本次文档修订恢复原始图像、补充源码解释，没有新增实验结果。
 
-## 设计与贡献
+## 设计、协作与维护
 
-Julius 负责实验设计、产品架构设计与模型架构设计。代码实现、部署及实验执行属于项目的实施流程，与上述设计职责分别记录。[贡献范围](docs/contributions_zh.md)说明个人工作和上游依赖的归属方式。
+Julius 负责实验设计、产品架构和模型架构设计。实际编码、部署与实验执行通过团队实现流程分别记录。[贡献范围](docs/contributions_zh.md)说明个人角色与署名方式。
 
-教学结构从前置知识进入具体案例、可检查的结果和贡献任务。读者可以先完成[一次证据复核](docs/contributions_zh.md#第一次贡献)，再按照[协作指南](CONTRIBUTING.zh-CN.md)提交。
+按[贡献指南](CONTRIBUTING.zh-CN.md)完成 Issue 讨论 → 认领 → 分支 → PR 审阅 → [成果登记](contributions/)。[维护说明](docs/maintenance.zh-CN.md)记录审阅职责和交接。连接源码的更正、更完整的解释、对不利结果的认真分析，都是有价值的贡献。
 
 ## 许可与来源
 
-原创代码采用 [MIT](LICENSE)，原创文档采用 [CC BY-NC-SA 4.0](LICENSE-DOCS.txt)。第三方组件保持各自许可，见[第三方声明](THIRD_PARTY_NOTICES.md)。本版本不包含原始行情及完整内部执行记录；已公开的筛选汇总值适用单独的[数据说明](evidence/DATA_NOTICE.md)。
+原创代码采用 [MIT](LICENSE)；原创文档和团队原创图采用 [CC BY-NC-SA 4.0](LICENSE-DOCS.txt)。第三方组件保留[原有许可](THIRD_PARTY_NOTICES.md)。源数据集与完整执行档案遵循原有权限；筛选后的公开记录附有[数据声明](evidence/DATA_NOTICE.md)。

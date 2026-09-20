@@ -2,7 +2,13 @@
 
 [中文](status_zh.md) · [Home](../README.md) · [Reproduction](reproduction.md)
 
-Last source/publication review: **20 September 2026**. This table separates checks executed for the public edition from historical records and remaining development validation.
+## Documentation and original-figure revision
+
+The current revision expands three bilingual cases, restores eight original PNG/SVG pairs, and prepares bilingual Datawhale initiation materials. Figure bytes are matched to archived sidecars, result identities and asset manifests. Review in this revision is limited to source reading, image inspection, file/hash comparison, and document link/privacy checks. Algorithm code, notebooks and reproduction scripts are not executed in this revision.
+
+## Earlier publication validation record
+
+The following table preserves checks recorded during the earlier preparation of this public edition on 20 September 2026. They are historical to the documentation revision above. Remaining full-suite and clean-environment work stays explicitly open.
 
 | Layer | Evidence available | Verification status |
 |---|---|---|

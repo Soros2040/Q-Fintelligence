@@ -59,3 +59,7 @@ flowchart LR
 ## 可参与的集成任务
 
 选择一个界面流程，画出请求 Schema、Worker 调用、持久化状态与输出产物的对应关系，再与算法 CLI 产物 Schema 比较。先提交 mock 示例和兼容性测试，再提出集成方案。参见[贡献入口](contributions_zh.md)。
+
+## 量子表示源码路径
+
+E02 使用[保真度核](../algorithm/qf_algorithm/legacy/quantum_features.py)与[锚点回归](../algorithm/qf_algorithm/legacy/run_e02.py)。E03 使用同一特征文件的 Z/ZZ 读出，再交给[经典图预测头](../algorithm/qf_algorithm/legacy/graph_head.py)。两条路径共享部分线路定义，但服务不同任务。[案例 02](cases/02-representations_zh.md)解释公式、选择控制与资源范围。产品/Agent 架构支撑实验组织，其评价与量子方法主张分别记录。

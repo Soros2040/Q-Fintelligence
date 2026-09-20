@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "original_figure_count": 8,
+  "figures": [
+    {
+      "id": "qubo",
+      "title_en": "QUBO coefficients",
+      "title_zh": "QUBO系数",
+      "description_en": "Symmetric matrix for the six-asset B01_L0.1 demonstration; x0–x5 follow the archived asset order.",
+      "description_zh": "六资产 B01_L0.1 本地演示的对称 QUBO 矩阵；x0–x5 沿用归档资产顺序。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "03",
+      "source_metadata_sha256": "67d692f0fd11119c1d5a78d14059fcd75e4f389d87d33cac0f3544caab091789",
+      "source_result_sha256": "5ff071d6966ef4e61fd241688401612211706d8b82c0c79b4dde3a30d2f26e8f",
+      "source_asset_manifest_sha256": [
+        "4bd473f44c4b15cbc46e270641541d5d71cd27b8bfe534ee1c29cbc300776082"
+      ],
+      "execution_mode": "LOCAL_DEMONSTRATION",
+      "evidence_role": "archived local demonstration",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "qubo.svg",
+          "sha256": "91bc26954fc9df7e0423f7e4d7a9e6f737851d2520289a2103e443f72ddc852c"
+        },
+        "png": {
+          "path": "qubo.png",
+          "sha256": "b14eb03982bae637826edcbf2567cc1909809220bf8f6731579e0f87d32d45a6"
+        }
+      }
+    },
+    {
+      "id": "objective_components",
+      "title_en": "Objective components",
+      "title_zh": "可行组合的收益、风险与费用",
+      "description_en": "Twenty feasible baskets sorted by objective; solid = return contribution, dashed = risk, dotted = cost. The horizontal axis is basket rank.",
+      "description_zh": "20个可行组合按目标排序；实线为收益项、虚线为风险项、点线为费用项，横轴是组合排序序号。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "03",
+      "source_metadata_sha256": "fce81e36336da93d70600193beafbc1d7a95f8626dfa3400332b8b6e42a1a498",
+      "source_result_sha256": "5ff071d6966ef4e61fd241688401612211706d8b82c0c79b4dde3a30d2f26e8f",
+      "source_asset_manifest_sha256": [
+        "4bd473f44c4b15cbc46e270641541d5d71cd27b8bfe534ee1c29cbc300776082"
+      ],
+      "execution_mode": "LOCAL_DEMONSTRATION",
+      "evidence_role": "archived local demonstration",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "objective_components.svg",
+          "sha256": "b6be235c7a1b8ffa5ef66e1d5e37b32ddd0310da47fe7e089869b8e4036d8141"
+        },
+        "png": {
+          "path": "objective_components.png",
+          "sha256": "651657137dbd08ad4b99752f68cdb0b6159a9165a167f1ff355b524d341ea9ad"
+        }
+      }
+    },
+    {
+      "id": "probabilities",
+      "title_en": "Calculated probabilities and sampled frequencies",
+      "title_zh": "计算概率与采样频率",
+      "description_en": "B01_L0.1, fixed qas_00, gamma 0.6, beta 0.25, 1024 local shots; filled bars = calculated probabilities, outlined bars = sampled frequencies.",
+      "description_zh": "B01_L0.1、固定 qas_00、gamma 0.6、beta 0.25、1024次本地采样；实心柱为计算概率、空心柱为采样频率。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "04",
+      "source_metadata_sha256": "a4ccee914698985b96e7cb78faa9f3c2a4127ed8417353efaecd4930403402e9",
+      "source_result_sha256": "5d75f8e3e96a5c0d4c777d514aadc9c377e223bcc5659df6306f663cf3a1efc3",
+      "source_asset_manifest_sha256": [
+        "cb8cbe6106028a0da3967d2511e6dd8be528752dea0a59bbaefbb4df46b7388f"
+      ],
+      "execution_mode": "LOCAL_DEMONSTRATION",
+      "evidence_role": "archived local demonstration",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "probabilities.svg",
+          "sha256": "99f300b7a0ef44af0e8e1a3597faf1666326ebb26a2fb7f872768f1095425f7d"
+        },
+        "png": {
+          "path": "probabilities.png",
+          "sha256": "9c26c79d3064fd288c92461c66a5b387e21a483a1a8ae4fb7b20a0d5f9ff6568"
+        }
+      }
+    },
+    {
+      "id": "feasible_probabilities",
+      "title_en": "Probabilities of feasible three-holding baskets",
+      "title_zh": "三资产可行组合的概率",
+      "description_en": "The twenty six-bit states with three ones; x-axis indexes feasible baskets, not all 64 binary integers. Bars retain original probability mass.",
+      "description_zh": "六比特中恰有三个1的20个状态；横轴为可行组合序号，不是64个二进制整数；柱高保留原概率质量。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "04",
+      "source_metadata_sha256": "76a97e15693b507f341bdad92fc0050d964e13decfbe794db2df774407dfa2b7",
+      "source_result_sha256": "5d75f8e3e96a5c0d4c777d514aadc9c377e223bcc5659df6306f663cf3a1efc3",
+      "source_asset_manifest_sha256": [
+        "cb8cbe6106028a0da3967d2511e6dd8be528752dea0a59bbaefbb4df46b7388f"
+      ],
+      "execution_mode": "LOCAL_DEMONSTRATION",
+      "evidence_role": "archived local demonstration",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "feasible_probabilities.svg",
+          "sha256": "bbd7ba41bbbb4f754c579390efbe901500caff36e98caa5f348825e04687d980"
+        },
+        "png": {
+          "path": "feasible_probabilities.png",
+          "sha256": "d973fe535431aa8a5a942e1528885a875517b224bb0b428ad2d78c24b8b7a227"
+        }
+      }
+    },
+    {
+      "id": "candidate_scores",
+      "title_en": "Observed candidate quality and proxy predictions",
+      "title_zh": "候选质量与代理预测",
+      "description_en": "Synthetic local integration: six candidates, four training candidates and two held out. Filled bars = observed objective gap; hatched bars = ridge-proxy prediction.",
+      "description_zh": "合成输入本地集成案例：六候选、四训练与二留出；实心柱为观测目标差距，斜线柱为岭回归代理预测。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "05",
+      "source_metadata_sha256": "957ffa3ffe8b0faa136e334b145c859ef553c699b74e732e91e62429c9905e1c",
+      "source_result_sha256": "4aea4ef437f609777bca71d91572192330ccc763ae5829f400d0f28fd5bf1789",
+      "source_asset_manifest_sha256": [
+        "37055f22c84b5a8ecfdf1736d8b79aaa73f95c07a2b7a58dc9017eb5a1579904"
+      ],
+      "execution_mode": "LOCAL_NORMALIZED_INPUT",
+      "evidence_role": "archived local demonstration",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "candidate_scores.svg",
+          "sha256": "f7020ab6952b512fdf89646e150be2eb31aa9b78c818585e4857ee3e7ca9803d"
+        },
+        "png": {
+          "path": "candidate_scores.png",
+          "sha256": "421745ec0829ebcb9896bd306d847e87fbc12b049ac608280cd80959b8531f40"
+        }
+      }
+    },
+    {
+      "id": "proxy_fit",
+      "title_en": "Training and held-out candidate predictions",
+      "title_zh": "训练与留出候选的代理预测",
+      "description_en": "Same synthetic integration; circles = training, squares = held out, dashed diagonal = exact agreement. Nearly constant predictions miss the best held-out objective.",
+      "description_zh": "同一合成集成案例；圆圈为训练、方框为留出，虚线对角线表示完全一致。近似常数预测未准确识别最好的留出目标。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "05",
+      "source_metadata_sha256": "08aacbb0d78c8f9065a481865f6eeede429fef1ac4b01083b78c7983cc618070",
+      "source_result_sha256": "4aea4ef437f609777bca71d91572192330ccc763ae5829f400d0f28fd5bf1789",
+      "source_asset_manifest_sha256": [
+        "37055f22c84b5a8ecfdf1736d8b79aaa73f95c07a2b7a58dc9017eb5a1579904"
+      ],
+      "execution_mode": "LOCAL_NORMALIZED_INPUT",
+      "evidence_role": "archived local demonstration",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "proxy_fit.svg",
+          "sha256": "23bc54718bb999ee816ed22f2b4ca11edeca0ff6d54cbbbe0cb68b5c113b59cb"
+        },
+        "png": {
+          "path": "proxy_fit.png",
+          "sha256": "0d0443e87ca2cacbc08fd87927ac721b965f1081915c52433a985b5f1b3ab76f"
+        }
+      }
+    },
+    {
+      "id": "optimization",
+      "title_en": "Recorded objective-evaluation trace",
+      "title_zh": "候选线路的实际求值轨迹",
+      "description_en": "Same synthetic integration; x-axis is actual evaluation index, y-axis expected objective. Temporary rises are optimizer evaluations, not training epochs.",
+      "description_zh": "同一合成集成案例；横轴为实际求值序号，纵轴为期望目标。暂时上升是优化器求值过程，不是训练轮次。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "05",
+      "source_metadata_sha256": "3ef84962a33a21c3a775569958973b784efa69c7ebea4a424fb0f73c2c20f736",
+      "source_result_sha256": "4aea4ef437f609777bca71d91572192330ccc763ae5829f400d0f28fd5bf1789",
+      "source_asset_manifest_sha256": [
+        "37055f22c84b5a8ecfdf1736d8b79aaa73f95c07a2b7a58dc9017eb5a1579904"
+      ],
+      "execution_mode": "LOCAL_NORMALIZED_INPUT",
+      "evidence_role": "archived local demonstration",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "optimization.svg",
+          "sha256": "597b83cdca653b285d84ac3019d465f049238f491a9ecb4c80bca69f44bdd495"
+        },
+        "png": {
+          "path": "optimization.png",
+          "sha256": "06aff9b312bf3d5543478216dc7106301464753fab9e64d23b1ac4c95d56f756"
+        }
+      }
+    },
+    {
+      "id": "effects",
+      "title_en": "Effects and intervals for 15 primary comparisons",
+      "title_zh": "十五项主比较的效应与区间",
+      "description_en": "Archived statistical reanalysis, with separate MAE, CVaR95 and objective-gap panels. Numbered comparisons are mapped below; task units remain distinct.",
+      "description_zh": "历史结果的统计复算图，MAE、CVaR95、目标差距分面。下表对应比较编号；任务单位仍须分别解释。",
+      "source_collection": "QF Algorithm 2.1.0 notebook archive",
+      "source_notebook_topic": "06",
+      "source_metadata_sha256": "f933fbf379b368f8d0a47b87c5e1f9d7f2aebcf178ccc8dc2355e40dfacee412",
+      "source_result_sha256": "7a6774fc19779449436e873942de3c66d436321f654fa8763cb77d34e7e32cf8",
+      "source_asset_manifest_sha256": [
+        "0ef4073e033a7c0621e89ce7729b4d55366cbb9299473d53541c127d3f6f7ef3"
+      ],
+      "execution_mode": "EXISTING_RESULTS_REANALYSIS",
+      "evidence_role": "archived statistical reanalysis",
+      "copy_policy": "byte-identical original image; original labels retained",
+      "files": {
+        "svg": {
+          "path": "effects.svg",
+          "sha256": "2b8e763c56b268969699c05a886684626f769d9f02472205840bbff9b0d1425d"
+        },
+        "png": {
+          "path": "effects.png",
+          "sha256": "50b1ed2a49f2bc74ced1123613526832081189c2b78cb2c01b0d899fed48dc06"
+        }
+      }
+    }
+  ]
+}
