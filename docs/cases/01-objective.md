@@ -33,7 +33,7 @@ Because $`x_i`$ takes only two values,
 Thus the cost term is affine in each binary variable. Add $`\kappa(\sum_i x_i-K)^2`$ when the solver works on the full binary domain. Using an upper-triangular QUBO convention,
 
 ```math
-C(x)=C_0+\sum_iQ_{ii}x_i+\sum_{i<j}Q_{ij}x_ix_j,
+C(x)=C_0+\sum_iQ_{ii}x_i+\sum_{i\lt j}Q_{ij}x_ix_j,
 ```
 
 ```math
@@ -46,7 +46,7 @@ Q_{ij}=2\lambda\Sigma_{ij}/K^2+2\kappa,\quad C_0=c\sum_i|v_i|+\kappa K^2.
 
 The factor two for off-diagonal covariance comes from the symmetric quadratic form. A full symmetric matrix representation requires a different storage convention; copying these coefficients without that distinction doubles interactions.
 
-Substitute $`x_i=(1-z_i)/2`$, $`z_i\in\lbrace -1,1\rbrace `$. The Ising couplings are $`J_{ij}=Q_{ij}/4`$, fields are $`h_i=-Q_{ii}/2-\sum_{j\ne i}Q_{\min(i,j),\max(i,j)}/4`$, and the constant is $`C_0+\sum_iQ_{ii}/2+\sum_{i<j}Q_{ij}/4`$. Constants leave the optimizer unchanged but must remain when comparing numeric energies or objective gaps.
+Substitute $`x_i=(1-z_i)/2`$, $`z_i\in\lbrace -1,1\rbrace `$. The Ising couplings are $`J_{ij}=Q_{ij}/4`$, fields are $`h_i=-Q_{ii}/2-\sum_{j\ne i}Q_{\min(i,j),\max(i,j)}/4`$, and the constant is $`C_0+\sum_iQ_{ii}/2+\sum_{i\lt j}Q_{ij}/4`$. Constants leave the optimizer unchanged but must remain when comparing numeric energies or objective gaps.
 
 ## A two-asset calculation
 

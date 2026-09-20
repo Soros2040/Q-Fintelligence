@@ -33,7 +33,7 @@ J(x)=-\mu^Tx/K+\lambda x^T\Sigma x/K^2+c\sum_i|x_i/K-v_i|.
 因此每个二元变量上的成本项都是仿射函数。若求解器遍历完整二元域，可加入 $`\kappa(\sum_i x_i-K)^2`$。采用上三角 QUBO 约定：
 
 ```math
-C(x)=C_0+\sum_iQ_{ii}x_i+\sum_{i<j}Q_{ij}x_ix_j,
+C(x)=C_0+\sum_iQ_{ii}x_i+\sum_{i\lt j}Q_{ij}x_ix_j,
 ```
 
 ```math
@@ -46,7 +46,7 @@ Q_{ij}=2\lambda\Sigma_{ij}/K^2+2\kappa,\quad C_0=c\sum_i|v_i|+\kappa K^2.
 
 协方差非对角项的系数二来自对称二次型。如果使用完整对称矩阵存储，系数约定需要相应变化；直接套用会重复计算交互项。
 
-代入 $`x_i=(1-z_i)/2`$，$`z_i\in\lbrace -1,1\rbrace `$。Ising 耦合为 $`J_{ij}=Q_{ij}/4`$，局部场为 $`h_i=-Q_{ii}/2-\sum_{j\ne i}Q_{\min(i,j),\max(i,j)}/4`$，常数为 $`C_0+\sum_iQ_{ii}/2+\sum_{i<j}Q_{ij}/4`$。常数不改变最优解，但比较能量值或目标差距时必须保留。
+代入 $`x_i=(1-z_i)/2`$，$`z_i\in\lbrace -1,1\rbrace `$。Ising 耦合为 $`J_{ij}=Q_{ij}/4`$，局部场为 $`h_i=-Q_{ii}/2-\sum_{j\ne i}Q_{\min(i,j),\max(i,j)}/4`$，常数为 $`C_0+\sum_iQ_{ii}/2+\sum_{i\lt j}Q_{ij}/4`$。常数不改变最优解，但比较能量值或目标差距时必须保留。
 
 ## 两资产手算例子
 
