@@ -10,11 +10,11 @@ Prerequisites: the objective in [Case 01](01-objective.md), probability distribu
 
 ## 1. Learn from an existing candidate-selection example
 
-The [selection source](../../algorithm/qf_algorithm/selection.py) fits a standardized ridge proxy to a whitelist of candidate features. Abstractly, for training candidates with features $z_i$ and measured local quality $g_i$,
+The [selection source](../../algorithm/qf_algorithm/selection.py) fits a standardized ridge proxy to a whitelist of candidate features. Abstractly, for training candidates with features $`z_i`$ and measured local quality $`g_i`$,
 
-$$
+```math
 (\widehat b,\widehat w)=\arg\min_{b,w}\sum_{i\in\mathcal T}(g_i-b-\widetilde z_i^Tw)^2+\alpha\|w\|_2^2.
-$$
+```
 
 Standardization is fitted on training candidates, and the ridge strength is selected by leave-one-candidate-out scoring. A predicted score can rank candidates only to the extent that these small data identify useful relationships. Evaluating a training candidate and predicting a held-out candidate are different checks.
 
@@ -56,14 +56,14 @@ The archived transfer study has 500 local-message circuits and 500 QAOA circuits
 | Cloud noise model | Matched submitted circuit | Provider implementation and finite shots |
 | Real hardware | Submitted physical circuit and mapping | Device behavior under the observed calibration |
 
-For normalized distributions $p,q$, total variation is $\mathrm{TV}(p,q)=\frac12\sum_x|p(x)-q(x)|$. Hellinger distance is $H(p,q)=\sqrt{\frac12\sum_x(\sqrt{p(x)}-\sqrt{q(x)})^2}$. The public tables distinguish $H$ from $H^2$. For the three-holding constraint, define $\mathcal F=\{x:\sum_i x_i=3\}$. Then
+For normalized distributions $`p,q`$, total variation is $`\mathrm{TV}(p,q)=\frac12\sum_x|p(x)-q(x)|`$. Hellinger distance is $`H(p,q)=\sqrt{\frac12\sum_x(\sqrt{p(x)}-\sqrt{q(x)})^2}`$. The public tables distinguish $`H`$ from $`H^2`$. For the three-holding constraint, define $`\mathcal F=\lbrace x:\sum_i x_i=3\rbrace `$. Then
 
-$$
+```math
 P_F=\sum_{x\in\mathcal F}p(x),\qquad
 G_F=\frac{\sum_{x\in\mathcal F}p(x)[f(x)-f^*]}{P_F}.
-$$
+```
 
-The conditional gap $G_F$ is defined only when $P_F>0$. Report feasibility beside the conditional gap: a distribution that produces good baskets rarely has a different operational value from one that does so consistently. An optimal sample alone does not characterize the distribution. For zero feasible counts, preserve that failure rather than substituting a favorable conditional value.
+The conditional gap $`G_F`$ is defined only when $`P_F>0`$. Report feasibility beside the conditional gap: a distribution that produces good baskets rarely has a different operational value from one that does so consistently. An optimal sample alone does not characterize the distribution. For zero feasible counts, preserve that failure rather than substituting a favorable conditional value.
 
 ## 4. What the archive shows
 

@@ -10,41 +10,41 @@ Prerequisites: vectors and inner products, basic quantum states, supervised regr
 
 ## 1. The circuit family already implemented
 
-The [feature source](../../algorithm/qf_algorithm/legacy/quantum_features.py) defines twelve frozen maps on six qubits. The catalogue varies one/two layers, input scale in $\{0.5,1,1.5\}$ and a CZ/controlled-RY chain. Each layer applies data-dependent RY and RZ rotations; the first begins with Hadamard gates. Quantum parameters are frozen while the classical prediction head is trained.
+The [feature source](../../algorithm/qf_algorithm/legacy/quantum_features.py) defines twelve frozen maps on six qubits. The catalogue varies one/two layers, input scale in $`\lbrace 0.5,1,1.5\rbrace `$ and a CZ/controlled-RY chain. Each layer applies data-dependent RY and RZ rotations; the first begins with Hadamard gates. Quantum parameters are frozen while the classical prediction head is trained.
 
-For a normalized six-coordinate input $x$, write
+For a normalized six-coordinate input $`x`$, write
 
-$$
+```math
 |\psi_\theta(x)\rangle=U_\theta(x)|0\rangle^{\otimes6},\qquad
 \rho_\theta(x)=|\psi_\theta(x)\rangle\langle\psi_\theta(x)|.
-$$
+```
 
-Here $\theta$ names a catalogue configuration. A finite catalogue search is an implemented form of model selection. A broader program of quantum-kernel self-design would additionally need explicit search spaces, trainable parameters or structural moves, objective choices, search-budget accounting and held-out evaluation; the present evidence supports the recorded catalogue comparison.
+Here $`\theta`$ names a catalogue configuration. A finite catalogue search is an implemented form of model selection. A broader program of quantum-kernel self-design would additionally need explicit search spaces, trainable parameters or structural moves, objective choices, search-budget accounting and held-out evaluation; the present evidence supports the recorded catalogue comparison.
 
 ### E02: similarity through a fidelity kernel
 
 The implemented `fidelity_kernel` computes
 
-$$
+```math
 k_\theta(x,x')=|\langle\psi_\theta(x)|\psi_\theta(x')\rangle|^2
-=\operatorname{Tr}[\rho_\theta(x)\rho_\theta(x')].
-$$
+=\mathrm{Tr}[\rho_\theta(x)\rho_\theta(x')].
+```
 
-For ideal normalized states, $0\leq k\leq1$ and $k(x,x)=1$. Its Gram matrix is positive semidefinite because, for real coefficients $c_i$,
+For ideal normalized states, $`0\leq k\leq1`$ and $`k(x,x)=1`$. Its Gram matrix is positive semidefinite because, for real coefficients $`c_i`$,
 
-$$
+```math
 \sum_{ij}c_ic_jk(x_i,x_j)=\left\|\sum_i c_i\rho(x_i)\right\|_{\mathrm{HS}}^2\geq0.
-$$
+```
 
 Independent noisy estimates of pairwise entries need not preserve this property. A measured-kernel study must state symmetrization, diagonal treatment and any PSD correction, and count those choices as part of the method.
 
 The [E02 implementation](../../algorithm/qf_algorithm/legacy/run_e02.py) uses 32 anchors selected from training rows and represents each sample as
 
-$$
+```math
 \Phi_\theta(x)=\big[k_\theta(x,a_1),\ldots,k_\theta(x,a_{32})\big].
-$$
+```
 
-These are anchored fidelity features. The source feeds them into a standardized `SGDRegressor`; it does not apply an inverse-square-root anchor-Gram transform. The classical comparator uses $\exp(-\|x-a_j\|^2/6)$ with the same head. Three development folds select among twelve maps; the final head is evaluated with five seeds. Input standardization is fitted on training rows, followed by clipping to $[-3,3]$ and multiplication by $\pi/3$.
+These are anchored fidelity features. The source feeds them into a standardized `SGDRegressor`; it does not apply an inverse-square-root anchor-Gram transform. The classical comparator uses $`\exp(-\|x-a_j\|^2/6)`$ with the same head. Three development folds select among twelve maps; the final head is evaluated with five seeds. Input standardization is fitted on training rows, followed by clipping to $`[-3,3]`$ and multiplication by $`\pi/3`$.
 
 The original run computes exact statevectors and reuses their classical cache for pairwise overlaps. Its finite-shot analysis samples binomial successes from those exact overlaps at 256, 1,024 and 4,096 shots. These entries describe a **local sampling estimator**. A hardware-equivalent pair budget is a cost model and must be distinguished from actual device calls. The source records anchor-Gram eigenvalues and a zero PSD-correction norm for its exact calculation.
 
@@ -52,26 +52,26 @@ The original run computes exact statevectors and reuses their classical cache fo
 
 The same state family also supplies a distinct representation:
 
-$$
+```math
 \phi_\theta(x)=\big(\langle Z_0\rangle,\ldots,\langle Z_5\rangle,
 \langle Z_0Z_1\rangle,\ldots,\langle Z_4Z_5\rangle\big)\in\mathbb R^{11}.
-$$
+```
 
 The eleven readouts are six single-qubit Z expectations and five neighboring ZZ expectations. They share a Z-basis measurement setting. The implementation explicitly distinguishes SDK basis strings `q5...q0` from readout order `q0...q5`; a reversal can silently change graph features while keeping array dimensions valid.
 
 The [graph head](../../algorithm/qf_algorithm/legacy/graph_head.py) applies classical graph aggregation. One layer has the form
 
-$$
+```math
 H_1=\tanh(A\Phi W_1+b_1),\qquad \widehat y=H_1W_o+b_o,
-$$
+```
 
-with another $A H_1$ aggregation in its two-layer version. Trainable weights belong to this prediction head. The full asset graph stays in classical memory; the local quantum register has six qubits. Asset count, register size, number of input encodings and measurement shots are separate resource dimensions.
+with another $`A H_1`$ aggregation in its two-layer version. Trainable weights belong to this prediction head. The full asset graph stays in classical memory; the local quantum register has six qubits. Asset count, register size, number of input encodings and measurement shots are separate resource dimensions.
 
 ## 2. Respect the information clock
 
 A label is usable only once its outcome is known. E02's development folds filter by `label_end`; the five-session downside target belongs to its original task contract. The newer [normalized panel](../../algorithm/qf_algorithm/data.py) and [pipeline](../../algorithm/qf_algorithm/pipeline.py) explicitly track label availability for a next-open-to-following-open task and purge immature training labels before an evaluation window.
 
-An illustrative clock is: form a signal at close $t$, enter at the next open, exit at the following open, and admit that label only after the exit. A five-session target needs its own longer availability horizon. The source/version and information contract must travel with each result; editing today's pipeline does not re-evaluate historical experiments.
+An illustrative clock is: form a signal at close $`t`$, enter at the next open, exit at the following open, and admit that label only after the exit. A five-session target needs its own longer availability horizon. The source/version and information contract must travel with each result; editing today's pipeline does not re-evaluate historical experiments.
 
 A useful comparison fixes the input information, target, date partitions, development budget and head capacity. Test graph direction with directional, reversed, self-only and randomized structures. To isolate expected-return features, hold covariance estimation fixed; to isolate risk estimation, hold the return model fixed. Record all declared comparisons, their correction family and the resampling unit.
 
@@ -97,12 +97,12 @@ The directional controls also constrain interpretation: E03 directional-minus-se
 
 ## 4. Prediction quality must survive the decision layer
 
-For period loss $L_t=-r_t$, empirical CVaR at confidence $\alpha$ can be expressed as
+For period loss $`L_t=-r_t`$, empirical CVaR at confidence $`\alpha`$ can be expressed as
 
-$$
+```math
 \widehat{\mathrm{CVaR}}_\alpha(L)=\min_\eta\left[\eta+
 \frac{1}{(1-\alpha)T}\sum_t\max(L_t-\eta,0)\right].
-$$
+```
 
 The precise sample convention should follow the registered implementation. Lower CVaR loss is favorable. A small MAE change can alter rankings, selected holdings, turnover and tail loss; its sign need not predict the financial effect.
 
