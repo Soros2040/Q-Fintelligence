@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/artifact-manifest.qf.v1.json",
+  "title": "q-fintelligence ArtifactManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "sha256",
+    "bytes",
+    "mediaType",
+    "relativePath",
+    "createdAt",
+    "producer",
+    "parentHashes"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "qf.v1" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "bytes": { "type": "integer", "minimum": 0 },
+    "mediaType": { "type": "string", "minLength": 1 },
+    "relativePath": { "type": "string", "pattern": "^sha256/[a-f0-9]{2}/[a-f0-9]{64}$" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "producer": { "type": "string", "minLength": 1 },
+    "parentHashes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+      "uniqueItems": true
+    }
+  }
+}

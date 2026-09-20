@@ -1,0 +1,123 @@
+{
+  "experiment_id": "E06",
+  "title": "噪声与QAS",
+  "task_id": "D02_CORE6_FIXED_CONTRACT_FIVE_SESSION_PORTFOLIO_MECHANISM",
+  "statistical_unit": "BASE_PROBLEM_WITH_PAIRED_NOISE_PROFILE_AND_PARAMETER_SEED",
+  "archived_execution_status": "LOCAL_COMPARISONS_COMPLETE",
+  "archived_scientific_status": "LOCAL_VERIFIED",
+  "source_result_sha256": "ca7f35b715039350d18e89b393f961b419c5cf7d75c34b61b02c7241117c05b0",
+  "source_snapshot": "2026-09-07 to 2026-09-09",
+  "evidence_type": "curated archived summary; not a new execution",
+  "comparisons": [
+    {
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        -0.0003046350104760755,
+        0.00016856894455536553
+      ],
+      "comparison": "noise_qas_vs_fixed",
+      "effect": -8.770881877982886e-05,
+      "n_problem_units": 8,
+      "p_holm": 0.46776611694152925,
+      "p_raw": 0.46776611694152925,
+      "paired_effects": [
+        8.882904785483502e-06,
+        -0.00018336368896496383,
+        -0.0006690103503611457,
+        -0.00026784712696359403,
+        0.0006188423419133723,
+        -9.740066659294326e-05,
+        -6.866640461661473e-06,
+        -0.0001049073235931783
+      ]
+    },
+    {
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        0.00012352463505153978,
+        0.0003344793485535131
+      ],
+      "comparison": "noise_qas_vs_resource",
+      "effect": 0.0002280377589733406,
+      "n_problem_units": 8,
+      "p_holm": 0.0009995002498750624,
+      "p_raw": 0.0004997501249375312,
+      "paired_effects": [
+        8.20761989206286e-05,
+        0.00025342670050277835,
+        0.00043668709052758353,
+        0.00040504888564252967,
+        0.00039480133465914606,
+        0.0001493454636658422,
+        7.47639300956492e-05,
+        2.8152467772567247e-05
+      ]
+    }
+  ],
+  "inference_scope": "fixed historical six-asset objective mechanisms; population transfer depends on base sampling",
+  "paired_units": [
+    {
+      "base_id": "B02",
+      "fixed": 0.0055493513006454375,
+      "noise": 0.005558234205430921,
+      "resource": 0.005476158006510292
+    },
+    {
+      "base_id": "B03",
+      "fixed": 0.011789950264478342,
+      "noise": 0.011606586575513379,
+      "resource": 0.0113531598750106
+    },
+    {
+      "base_id": "B04",
+      "fixed": 0.01460422163549846,
+      "noise": 0.013935211285137314,
+      "resource": 0.01349852419460973
+    },
+    {
+      "base_id": "B05",
+      "fixed": 0.015490158876145908,
+      "noise": 0.015222311749182314,
+      "resource": 0.014817262863539784
+    },
+    {
+      "base_id": "B06",
+      "fixed": 0.010494078499442283,
+      "noise": 0.011112920841355655,
+      "resource": 0.01071811950669651
+    },
+    {
+      "base_id": "B07",
+      "fixed": 0.009400076884746469,
+      "noise": 0.009302676218153526,
+      "resource": 0.009153330754487684
+    },
+    {
+      "base_id": "B08",
+      "fixed": 0.004113320195557161,
+      "noise": 0.0041064535550954994,
+      "resource": 0.00403168962499985
+    },
+    {
+      "base_id": "B09",
+      "fixed": 0.0027790905152486806,
+      "noise": 0.0026741831916555023,
+      "resource": 0.002646030723882935
+    }
+  ],
+  "primary_definition": {
+    "aggregation": "mean over frozen 5 candidates, 5 seeds and 4 noise profiles within each of 8 bases",
+    "endpoint": "penalized_noisy_expected_objective_gap_difference",
+    "penalty": "1.01*(sum abs Qii + 2 sum i<j abs Qij)+1e-12",
+    "resampling": "paired bootstrap of 8 base problems",
+    "selection": "fixed qas00..04; resource lowest (two-qubit gates,depth,id); noise lowest development mean normalized penalized gap"
+  },
+  "resources": {
+    "classical_draws": 0,
+    "result_count": 690,
+    "selection_cpu_seconds": 0.04839183700000049,
+    "shots": 2826240,
+    "summary_cpu_seconds": 0.4823922810000001,
+    "unit_cpu_seconds": 392.04204185299966
+  }
+}

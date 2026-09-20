@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/batch_submit_receipt.schema.json",
+  "title": "QAS30 batch submit receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "runId",
+    "batchId",
+    "target",
+    "shots",
+    "requestSha256",
+    "batchSha256",
+    "providerRequestSha256",
+    "providerResponseSha256",
+    "providerHttpStatus",
+    "providerQueryIds",
+    "state",
+    "transportRequestCount",
+    "queryBindings",
+    "resubmitAllowed",
+    "persistedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "qf.qas30.batch-submit-receipt.v1" },
+    "runId": { "$ref": "#/$defs/identifier" },
+    "batchId": { "$ref": "#/$defs/identifier" },
+    "target": { "const": "tianyan176" },
+    "shots": { "const": 1000 },
+    "requestSha256": { "$ref": "#/$defs/sha256" },
+    "batchSha256": { "$ref": "#/$defs/sha256" },
+    "providerRequestSha256": { "$ref": "#/$defs/sha256" },
+    "providerResponseSha256": { "$ref": "#/$defs/sha256" },
+    "providerHttpStatus": { "type": "integer", "minimum": 0, "maximum": 599 },
+    "providerQueryIds": {
+      "type": "array",
+      "maxItems": 50,
+      "items": { "$ref": "#/$defs/queryId" }
+    },
+    "state": {
+      "enum": [
+        "QUERY_IDS_PERSISTED",
+        "PARTIAL_UNKNOWN",
+        "IDENTITY_MISMATCH",
+        "UNKNOWN_PROVIDER_OUTCOME"
+      ]
+    },
+    "transportRequestCount": { "const": 1 },
+    "queryBindings": {
+      "type": "array",
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/queryBinding" }
+    },
+    "resubmitAllowed": { "const": false },
+    "persistedAt": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "properties": { "state": { "const": "QUERY_IDS_PERSISTED" } },
+        "required": ["state"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "providerQueryIds": {
+            "type": "array",
+            "minItems": 5,
+            "maxItems": 5,
+            "uniqueItems": true
+          },
+          "queryBindings": { "type": "array", "minItems": 5, "maxItems": 5 }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": { "state": { "const": "PARTIAL_UNKNOWN" } },
+        "required": ["state"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "providerQueryIds": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "uniqueItems": true
+          },
+          "queryBindings": { "type": "array", "minItems": 1, "maxItems": 4 }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": { "state": { "const": "IDENTITY_MISMATCH" } },
+        "required": ["state"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "providerQueryIds": { "type": "array", "minItems": 1 },
+          "queryBindings": { "type": "array", "maxItems": 5 }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": { "state": { "const": "UNKNOWN_PROVIDER_OUTCOME" } },
+        "required": ["state"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "providerQueryIds": { "type": "array", "maxItems": 0 },
+          "queryBindings": { "type": "array", "maxItems": 0 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$"
+    },
+    "queryId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,511}$"
+    },
+    "candidateId": { "type": "string", "pattern": "^C(?:0[1-9]|[12][0-9]|30)$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "queryBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateId", "qcisSha256", "queryId", "position"],
+      "properties": {
+        "candidateId": { "$ref": "#/$defs/candidateId" },
+        "qcisSha256": { "$ref": "#/$defs/sha256" },
+        "queryId": { "$ref": "#/$defs/queryId" },
+        "position": { "type": "integer", "minimum": 0, "maximum": 4 }
+      }
+    }
+  }
+}

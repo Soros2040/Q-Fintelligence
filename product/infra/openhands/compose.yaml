@@ -1,0 +1,100 @@
+name: qf-openhands
+
+services:
+  agent-server:
+    build:
+      context: ../..
+      dockerfile: infra/openhands/Dockerfile.agent-server
+    image: qfintelligence/openhands-agent-server:1.39.0-qf.1
+    user: "${OPENHANDS_UID:-1000}:${OPENHANDS_GID:-1000}"
+    read_only: true
+    init: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 4g
+    cpus: 2
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=536870912
+      - /opt/qf/deps/node_modules/.vite:rw,nosuid,nodev,noexec,uid=${OPENHANDS_UID:-1000},gid=${OPENHANDS_GID:-1000},mode=0700,size=268435456
+    networks:
+      - sandbox-internal
+    environment:
+      SESSION_API_KEY: ${OPENHANDS_SESSION_API_KEY:?set an ephemeral session API key}
+      OH_CONVERSATIONS_PATH: /openhands-state/conversations
+      OH_WORKSPACE_PATH: /workspace
+      OH_BASH_EVENTS_DIR: /openhands-state/bash-events
+      OH_TELEMETRY_EXPORTER: none
+      OH_ENABLE_VSCODE: "false"
+      OPENHANDS_SUPPRESS_BANNER: "1"
+      LITELLM_LOCAL_MODEL_COST_MAP: "True"
+      HOME: /tmp/home
+      XDG_CACHE_HOME: /tmp/cache
+      HTTP_PROXY: http://model-egress:3128
+      HTTPS_PROXY: http://model-egress:3128
+      NO_PROXY: 127.0.0.1,localhost,model-egress,agent-ingress
+    volumes:
+      - type: bind
+        source: ${OPENHANDS_WORKSPACE_PATH:?set an isolated run workspace}
+        target: /workspace
+      - type: bind
+        source: ${OPENHANDS_STATE_PATH:?set an isolated runtime state directory}
+        target: /openhands-state
+  agent-ingress:
+    image: qfintelligence/openhands-agent-server:1.39.0-qf.1
+    command:
+      - python
+      - /opt/qf/ingress_proxy.py
+      - --target-host
+      - agent-server
+      - --target-port
+      - "8000"
+      - --listen-port
+      - "8000"
+    user: "${OPENHANDS_UID:-1000}:${OPENHANDS_GID:-1000}"
+    read_only: true
+    init: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 32
+    mem_limit: 128m
+    cpus: 0.25
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=16777216
+    networks:
+      - sandbox-internal
+      - ingress-bridge
+    ports:
+      - 127.0.0.1:${OPENHANDS_AGENT_SERVER_PORT:-27900}:8000
+  model-egress:
+    image: qfintelligence/openhands-agent-server:1.39.0-qf.1
+    command:
+      - python
+      - /opt/qf/egress_proxy.py
+      - --allow-host
+      - ${OPENHANDS_MODEL_HOST:?set the exact model API host}
+    user: "${OPENHANDS_UID:-1000}:${OPENHANDS_GID:-1000}"
+    read_only: true
+    init: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 32
+    mem_limit: 128m
+    cpus: 0.25
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=16777216
+    networks:
+      - sandbox-internal
+      - model-egress
+
+networks:
+  sandbox-internal:
+    internal: true
+  ingress-bridge:
+  model-egress:

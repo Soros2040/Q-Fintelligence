@@ -1,0 +1,40 @@
+{
+	admin 127.0.0.1:2019
+}
+
+(qf_site) {
+	encode zstd gzip
+
+	header {
+		-Server
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(), geolocation=(), microphone=()"
+	}
+
+	@api path /api/*
+	handle @api {
+		reverse_proxy 127.0.0.1:27872 {
+			flush_interval -1
+			transport http {
+				read_timeout 3600s
+				write_timeout 3600s
+			}
+		}
+	}
+
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}
+
+localhost {
+	import qf_site
+}
+
+http://127.0.0.1:27871 {
+	import qf_site
+}

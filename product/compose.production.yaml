@@ -1,0 +1,77 @@
+name: qfintelligence
+
+services:
+  app:
+    build:
+      context: .
+      target: app
+      args:
+        NODE_IMAGE: ${QF_NODE_IMAGE:-dockerproxy.net/library/node:24-bookworm-slim}
+        NPM_REGISTRY: ${QF_NPM_REGISTRY:-https://mirrors.tencentyun.com/npm}
+        PIP_INDEX_URL: ${QF_PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+        PIP_TRUSTED_HOST: ${QF_PIP_TRUSTED_HOST:-pypi.tuna.tsinghua.edu.cn}
+    image: qfintelligence-app:production
+    container_name: qfintelligence-app
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - path: .env
+        format: raw
+    environment:
+      NODE_ENV: production
+      QF_PROCESS_NAMESPACE: qfintelligence
+      QF_API_HOST: 127.0.0.1
+      QF_API_PORT: "27872"
+      QF_WEB_HOST: 127.0.0.1
+      QF_WEB_PORT: "27871"
+      QF_WORKER_HEALTH_PORT: "27873"
+      QF_DEBUG_PORT: "27874"
+      QF_PREVIEW_PORT: "27875"
+      QF_STATE_ROOT: .local/state
+      QF_SQLITE_PATH: .local/state/qfintelligence.sqlite3
+      QF_ARTIFACT_ROOT: .local/artifacts
+      QF_AGENT_MODE: openhands
+      QF_OPENHANDS_SESSION_ROOT: .local/openhands-sessions
+      QF_OPENHANDS_SIDECAR_PATH: workers/openhands_sidecar/run-isolated.sh
+      QF_SYSTEM_PROMPT_VERSION: qf-openhands-runtime.v1
+      HARDWARE_MODE: READ_ONLY
+      HARDWARE_TARGET: tianyan176
+      MAX_NEW_HARDWARE_JOBS: "0"
+      SHOTS_PER_JOB: "0"
+      GIT_ACTION: NONE
+      NO_PROXY: localhost,127.0.0.1,::1
+      no_proxy: localhost,127.0.0.1,::1
+    volumes:
+      - ./.env:/app/.env:ro
+      - qf_state:/app/.local
+    pids_limit: 1024
+    security_opt:
+      - no-new-privileges:true
+
+  web:
+    build:
+      context: .
+      target: web
+      args:
+        NODE_IMAGE: ${QF_NODE_IMAGE:-dockerproxy.net/library/node:24-bookworm-slim}
+        CADDY_IMAGE: ${QF_CADDY_IMAGE:-docker.m.daocloud.io/library/caddy:2-alpine}
+        NPM_REGISTRY: ${QF_NPM_REGISTRY:-https://mirrors.tencentyun.com/npm}
+        PIP_INDEX_URL: ${QF_PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+        PIP_TRUSTED_HOST: ${QF_PIP_TRUSTED_HOST:-pypi.tuna.tsinghua.edu.cn}
+    image: qfintelligence-web:production
+    container_name: qfintelligence-web
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      app:
+        condition: service_healthy
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  qf_state:
+  caddy_data:
+  caddy_config:

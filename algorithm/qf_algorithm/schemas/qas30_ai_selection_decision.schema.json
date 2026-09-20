@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/qas30_ai_selection_decision.schema.json",
+  "title": "QAS30 strict AI bundle-selection decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "stage", "targetStage", "selectedBundleId", "selectedCandidateIds", "reasonCodes"],
+  "properties": {
+    "schemaVersion": { "const": "qf.qas30.ai-selection-decision.v2" },
+    "stage": { "const": "LLM_QAS_AUGMENT" },
+    "targetStage": { "const": "R2_LLM" },
+    "selectedBundleId": { "$ref": "#/$defs/identifier" },
+    "selectedCandidateIds": {
+      "type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true,
+      "items": { "$ref": "#/$defs/candidateId" }
+    },
+    "reasonCodes": {
+      "type": "array", "minItems": 1, "maxItems": 6, "uniqueItems": true,
+      "items": { "enum": [
+        "R1_GENERALIZATION", "K_TOPOLOGY_FIT", "ACTIVE_CALIBRATION_FIT",
+        "COMPILE_RESOURCE_EFFICIENCY", "LOCAL_OBJECTIVE_QUALITY", "FROZEN_TIE_BREAK"
+      ] }
+    }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$" },
+    "candidateId": { "type": "string", "pattern": "^C(?:0[1-9]|[12][0-9]|30)$" }
+  }
+}

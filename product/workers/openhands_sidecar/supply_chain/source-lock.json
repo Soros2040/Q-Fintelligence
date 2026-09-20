@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "toolchain": {
+    "python": "3.12.13",
+    "uv": "0.11.29",
+    "zlib": "1.3.2"
+  },
+  "upstream": {
+    "repository": "https://github.com/OpenHands/software-agent-sdk",
+    "tag": "v1.39.0",
+    "commit": "54dfbc551408d10de54eb8ac5612bae6d3f99d16",
+    "git_tree": "9d1f379e3e075e2599b7b2f6655fac9c01051024",
+    "archive_url": "https://codeload.github.com/OpenHands/software-agent-sdk/tar.gz/54dfbc551408d10de54eb8ac5612bae6d3f99d16",
+    "archive_sha256": "5b44e675548faac956061047397578cfb6f145161cd61efbb8bb41d5292195d6",
+    "sdk_project_pyproject_sha256": "f9d393906f591f99beab779a97b7c62af227e506d44c2289a2fd5813519a0070",
+    "sdk_source_file_count": 285,
+    "sdk_source_tree_sha256": "6b60abe506b8463bc844907b1360c1d3d9f449946fbd89707f3968e59839131c",
+    "sdk_python_file_count": 276,
+    "sdk_python_tree_sha256": "51a7f0fd06e05a957f6b2e6af3f1e4bc4cb8591a5fbabaee05b307108bcdfb90",
+    "license_sha256": "14a9b631c658eee682c6c2973525fbdf808c3457176bc47513052c559cc5ce86"
+  },
+  "derivative": {
+    "distribution": "openhands-sdk",
+    "version": "1.39.0+qf.noobservability.1",
+    "wheel_filename": "openhands_sdk-1.39.0+qf.noobservability.1-py3-none-any.whl",
+    "wheel_sha256": "9818384aa3393524ed05574fba041009a91f6e2ce35db77d86cd1a600a6e70e3",
+    "patched_pyproject_sha256": "1fe1ac6391c3d271e374e685b0aa268b45b971b6d7fb5bec73e6b4688b91b910",
+    "patch_sha256": "2d887f8cdc4ac25e6280b008ef926a2e96290b316fa7f353e8b63b28d4dcff20",
+    "notice_sha256": "a4d4a120c9f3d8014a0b7d152ed5281dfc01fd948b7180b468b1de64015e5f43",
+    "metadata_sha256": "de3a049dc67da593621db076039a4555089d59ce9fb05978a5f6cb03a95f86be",
+    "wheel_metadata_sha256": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+    "top_level_sha256": "8c7815bbd2340656a6f015c581e76818a7e094f17c5ef5b54ec2452237203f81",
+    "runtime_file_count": 280,
+    "runtime_tree_sha256": "5e2550ef4eb54890ea72f2bf255ff784026cac41072553fee0451ce9a813fb9e"
+  },
+  "canonical_wheel": {
+    "runtime_zip_timestamp": [
+      2026,
+      7,
+      28,
+      12,
+      18,
+      4
+    ],
+    "metadata_zip_timestamp": [
+      2026,
+      7,
+      28,
+      14,
+      2,
+      46
+    ],
+    "compression": "deflate-6",
+    "regular_file_mode": "0100644",
+    "record_file_mode": "0100664"
+  }
+}

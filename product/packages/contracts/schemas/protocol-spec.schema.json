@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/protocol-spec.qf.v1.json",
+  "title": "q-fintelligence ProtocolSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "protocolId",
+    "taskId",
+    "asOfDate",
+    "universe",
+    "split",
+    "label",
+    "riskGraph",
+    "portfolio",
+    "researchIterationLimit",
+    "testPolicy"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "qf.v1" },
+    "protocolId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "taskId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "asOfDate": { "type": "string", "format": "date" },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetCount", "selectionPeriod", "selectionRule"],
+      "properties": {
+        "assetCount": { "const": 6 },
+        "selectionPeriod": { "const": "2019" },
+        "selectionRule": { "const": "historical-hs300-cross-industry-liquidity" }
+      }
+    },
+    "split": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "train", "validation", "test"],
+      "properties": {
+        "strategy": { "const": "time" },
+        "train": { "$ref": "#/$defs/trainPeriod" },
+        "validation": { "$ref": "#/$defs/validationPeriod" },
+        "test": { "$ref": "#/$defs/testPeriod" }
+      }
+    },
+    "label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "horizonTradingDays", "nonNegative"],
+      "properties": {
+        "name": { "const": "future_5d_downside_realized_risk" },
+        "horizonTradingDays": { "const": 5 },
+        "nonNegative": { "const": true }
+      }
+    },
+    "riskGraph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "varOrder", "windowTradingDays", "regularization", "directed"],
+      "properties": {
+        "method": { "const": "generalized-fevd" },
+        "varOrder": { "const": 1 },
+        "windowTradingDays": { "const": 120 },
+        "regularization": { "enum": ["ridge", "lasso"] },
+        "directed": { "const": true }
+      }
+    },
+    "portfolio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetCount", "selectedCount", "weighting"],
+      "properties": {
+        "assetCount": { "const": 6 },
+        "selectedCount": { "const": 3 },
+        "weighting": { "const": "equal" }
+      }
+    },
+    "researchIterationLimit": { "const": 5 },
+    "testPolicy": { "const": "sealed-single-execution" }
+  },
+  "$defs": {
+    "trainPeriod": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "const": "2020-01-01" },
+        "end": { "const": "2022-12-31" }
+      }
+    },
+    "validationPeriod": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "const": "2023-01-01" },
+        "end": { "const": "2023-12-31" }
+      }
+    },
+    "testPeriod": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "const": "2024-01-01" },
+        "end": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}

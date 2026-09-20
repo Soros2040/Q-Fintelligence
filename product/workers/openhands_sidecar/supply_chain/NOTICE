@@ -1,0 +1,12 @@
+Q-Fintelligence derived runtime build
+
+Source: OpenHands software-agent-sdk tag v1.39.0,
+commit 54dfbc551408d10de54eb8ac5612bae6d3f99d16.
+
+The Python source files are unchanged. Package metadata differs only to:
+- identify this build with a local version suffix;
+- include the upstream MIT license and this notice; and
+- omit the lmnr dependency because Q-Fintelligence disables OpenHands
+  observability and supplies no Laminar or OpenTelemetry configuration.
+
+This is a Q-Fintelligence-maintained build, not an upstream OpenHands release.

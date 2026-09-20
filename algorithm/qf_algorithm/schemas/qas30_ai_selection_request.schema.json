@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/qas30_ai_selection_request.schema.json",
+  "title": "QAS30 frozen AI bundle-selection request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "stage", "targetStage", "runId", "blockId", "blockBatchIndex", "sourceCommitSha",
+    "frozenCandidatePoolSha256", "r1SnapshotSha256", "kSnapshotSha256",
+    "activeCalibrationSha256", "providerEpoch", "candidates", "feasibleBundles"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "qf.qas30.ai-selection-request.v2" },
+    "stage": { "const": "LLM_QAS_AUGMENT" },
+    "targetStage": { "const": "R2_LLM" },
+    "runId": { "$ref": "#/$defs/identifier" },
+    "blockId": { "$ref": "#/$defs/blockIdentifier" },
+    "blockBatchIndex": { "const": 6 },
+    "sourceCommitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "frozenCandidatePoolSha256": { "$ref": "#/$defs/sha256" },
+    "r1SnapshotSha256": { "$ref": "#/$defs/sha256" },
+    "kSnapshotSha256": { "$ref": "#/$defs/sha256" },
+    "activeCalibrationSha256": { "$ref": "#/$defs/sha256" },
+    "providerEpoch": { "$ref": "#/$defs/identifier" },
+    "candidates": {
+      "type": "array", "minItems": 5, "maxItems": 20,
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "feasibleBundles": {
+      "type": "array", "minItems": 1, "maxItems": 100,
+      "items": { "$ref": "#/$defs/bundle" }
+    }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$" },
+    "blockIdentifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "candidateId": { "type": "string", "pattern": "^C(?:0[1-9]|[12][0-9]|30)$" },
+    "finiteNumber": { "type": "number" },
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "candidateId", "candidateSpecSha256", "canonicalIrSha256", "qcisSha256",
+        "messageLayers", "reuploadCount", "rotationAxis", "localValidationLoss",
+        "quboObjectiveDegradation", "compiledDepth", "twoQubitGates", "swapCount",
+        "calibrationNoiseProxy"
+      ],
+      "properties": {
+        "candidateId": { "$ref": "#/$defs/candidateId" },
+        "candidateSpecSha256": { "$ref": "#/$defs/sha256" },
+        "canonicalIrSha256": { "$ref": "#/$defs/sha256" },
+        "qcisSha256": { "$ref": "#/$defs/sha256" },
+        "messageLayers": { "type": "integer", "minimum": 0 },
+        "reuploadCount": { "type": "integer", "minimum": 0 },
+        "rotationAxis": { "enum": ["RX", "RY", "RZ"] },
+        "localValidationLoss": { "$ref": "#/$defs/finiteNumber" },
+        "quboObjectiveDegradation": { "$ref": "#/$defs/finiteNumber" },
+        "compiledDepth": { "type": "integer", "minimum": 0 },
+        "twoQubitGates": { "type": "integer", "minimum": 0 },
+        "swapCount": { "type": "integer", "minimum": 0 },
+        "calibrationNoiseProxy": { "$ref": "#/$defs/finiteNumber" }
+      }
+    },
+    "measurementOrder": {
+      "type": "array", "minItems": 6, "maxItems": 6, "uniqueItems": true,
+      "items": { "$ref": "#/$defs/identifier" }
+    },
+    "bundle": {
+      "type": "object", "additionalProperties": false,
+      "required": ["bundleId", "bundleSha256", "mappingSnapshotSha256", "commonMeasurementPhysicalOrder", "candidateIds"],
+      "properties": {
+        "bundleId": { "$ref": "#/$defs/identifier" },
+        "bundleSha256": { "$ref": "#/$defs/sha256" },
+        "mappingSnapshotSha256": { "$ref": "#/$defs/sha256" },
+        "commonMeasurementPhysicalOrder": { "$ref": "#/$defs/measurementOrder" },
+        "candidateIds": {
+          "type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true,
+          "items": { "$ref": "#/$defs/candidateId" }
+        }
+      }
+    }
+  }
+}

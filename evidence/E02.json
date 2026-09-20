@@ -1,0 +1,53 @@
+{
+  "experiment_id": "E02",
+  "title": "任务相关特征映射",
+  "task_id": "D02_CORE6_FIVE_SESSION_DOWNSIDE",
+  "statistical_unit": "DATE",
+  "archived_execution_status": "LOCAL_COMPARISONS_COMPLETE",
+  "archived_scientific_status": "LOCAL_VERIFIED",
+  "source_result_sha256": "9ef2c585bd17b17d576ef48e284306041bc114b9a6d01411da47375f970f41d2",
+  "source_snapshot": "2026-09-07 to 2026-09-09",
+  "evidence_type": "curated archived summary; not a new execution",
+  "date_count": 576,
+  "asset_date_count": 3456,
+  "hold_sessions": 5,
+  "target": "future5_downside_annualized_original_scale",
+  "comparison_family": [
+    {
+      "block_length": 80,
+      "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "comparison": "selected_vs_fixed",
+      "effect": 0.0,
+      "endpoint": "mean",
+      "n_dates": 576,
+      "n_seeds": 5,
+      "p_holm": 1.0,
+      "p_raw": 1.0,
+      "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+      "tail_mass_per_seed": null
+    },
+    {
+      "block_length": 80,
+      "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        -0.0009172197433005078,
+        -0.00027126216354105925
+      ],
+      "comparison": "selected_vs_classical",
+      "effect": -0.0005830380932203005,
+      "endpoint": "mean",
+      "n_dates": 576,
+      "n_seeds": 5,
+      "p_holm": 0.0029985007496251873,
+      "p_raw": 0.0014992503748125937,
+      "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+      "tail_mass_per_seed": null
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qf-algorithm"
+version = "2.1.0"
+description = "Risk-enhanced portfolio optimization and adaptive quantum circuit decisions"
+requires-python = ">=3.11,<3.12"
+dependencies = ["numpy==2.4.6", "pandas==3.0.3", "scipy==1.17.1", "scikit-learn==1.9.0", "cqlib==1.3.11", "matplotlib>=3.10", "pyarrow>=19", "jsonschema>=4"]
+
+[project.optional-dependencies]
+notebooks = ["nbformat>=5", "nbclient>=0.10", "ipykernel>=6", "jupyterlab>=4", "ipywidgets>=8.1,<9", "jupyterlab_widgets>=3,<4"]
+
+[project.scripts]
+qf-algorithm = "qf_algorithm.cli:entrypoint"
+qf-reproduce = "qf_algorithm.compat_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["qf_algorithm*"]
+
+[tool.setuptools.package-data]
+qf_algorithm = ["provenance/*.json", "examples/*.json", "schemas/*.json"]

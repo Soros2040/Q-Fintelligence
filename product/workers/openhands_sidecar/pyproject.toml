@@ -1,0 +1,43 @@
+[project]
+name = "qf-openhands-sidecar"
+version = "0.1.0"
+description = "Isolated OpenHands SDK runtime sidecar for q-fintelligence"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "jsonschema==4.26.0",
+    "litellm>=1.93.0",
+    "openhands-agent-server==1.39.0",
+    "openhands-sdk==1.39.0+qf.noobservability.1",
+    "openhands-tools==1.39.0",
+    "openhands-workspace==1.39.0",
+]
+
+[tool.uv]
+exclude-newer = "2026-07-30T00:00:00Z"
+constraint-dependencies = [
+    "aiohttp>=3.13.3",
+    "litellm>=1.93.0",
+    "lupa>=2.8",
+    "orjson>=3.11.7",
+    "pillow>=12.1.1",
+    "protobuf>=6.33.5",
+    "rich>=14.3.3",
+    "starlette>=0.49.1",
+    "urllib3>=2.6.3",
+]
+
+[tool.uv.sources]
+openhands-sdk = { path = "vendor/openhands_sdk-1.39.0+qf.noobservability.1-py3-none-any.whl" }
+
+[tool.uv.workspace]
+members = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC", "RUF"]

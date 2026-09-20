@@ -1,0 +1,23 @@
+diff --git a/openhands-sdk/pyproject.toml b/openhands-sdk/pyproject.toml
+index 82e842e..5a60e89 100644
+--- a/openhands-sdk/pyproject.toml
++++ b/openhands-sdk/pyproject.toml
+@@ -1,7 +1,9 @@
+ [project]
+ name = "openhands-sdk"
+-version = "1.39.0"
++version = "1.39.0+qf.noobservability.1"
+ description = "OpenHands SDK - Core functionality for building AI agents"
++license = "MIT"
++license-files = ["LICENSE", "NOTICE"]
+ 
+ requires-python = ">=3.12"
+ dependencies = [
+@@ -20,7 +22,6 @@ dependencies = [
+     "python-json-logger>=3.3.0",
+     "tenacity>=9.1.2",
+     "websockets>=12",
+-    "lmnr>=0.7.56,<0.8.0",
+     "tree-sitter>=0.25",
+     "tree-sitter-bash>=0.25",
+ ]

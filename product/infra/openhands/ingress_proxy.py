@@ -1,0 +1,56 @@
+"""Fixed-target TCP ingress for an internal-only OpenHands Agent Server."""
+
+from __future__ import annotations
+
+import argparse
+import asyncio
+import contextlib
+
+
+async def _pump(reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
+    try:
+        while chunk := await reader.read(64 * 1024):
+            writer.write(chunk)
+            await writer.drain()
+    finally:
+        writer.close()
+        with contextlib.suppress(ConnectionError):
+            await writer.wait_closed()
+
+
+async def _serve(target_host: str, target_port: int, listen_port: int) -> None:
+    async def handle(
+        client_reader: asyncio.StreamReader,
+        client_writer: asyncio.StreamWriter,
+    ) -> None:
+        try:
+            target_reader, target_writer = await asyncio.open_connection(
+                target_host,
+                target_port,
+            )
+        except OSError:
+            client_writer.close()
+            await client_writer.wait_closed()
+            return
+        await asyncio.gather(
+            _pump(client_reader, target_writer),
+            _pump(target_reader, client_writer),
+            return_exceptions=True,
+        )
+
+    server = await asyncio.start_server(handle, host="0.0.0.0", port=listen_port)
+    async with server:
+        await server.serve_forever()
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--target-host", required=True)
+    parser.add_argument("--target-port", required=True, type=int)
+    parser.add_argument("--listen-port", required=True, type=int)
+    arguments = parser.parse_args()
+    asyncio.run(_serve(arguments.target_host, arguments.target_port, arguments.listen_port))
+
+
+if __name__ == "__main__":
+    main()

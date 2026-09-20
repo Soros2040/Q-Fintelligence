@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/qas30_ai_selection_receipt.schema.json",
+  "title": "QAS30 AI bundle-selection receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "stage", "targetStage", "runId", "blockId", "blockBatchIndex", "requestSha256", "decisionSha256",
+    "activeCalibrationSha256", "providerEpoch", "provider", "model", "fallbackFrom",
+    "decision", "attempts"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "qf.qas30.ai-selection-receipt.v2" },
+    "stage": { "const": "LLM_QAS_AUGMENT" },
+    "targetStage": { "const": "R2_LLM" },
+    "runId": { "$ref": "#/$defs/identifier" },
+    "blockId": { "$ref": "#/$defs/blockIdentifier" },
+    "blockBatchIndex": { "const": 6 },
+    "requestSha256": { "$ref": "#/$defs/sha256" },
+    "decisionSha256": { "$ref": "#/$defs/sha256" },
+    "activeCalibrationSha256": { "$ref": "#/$defs/sha256" },
+    "providerEpoch": { "$ref": "#/$defs/identifier" },
+    "provider": { "enum": ["DEEPSEEK", "MINIMAX"] },
+    "model": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "fallbackFrom": { "enum": ["DEEPSEEK_EXPLICIT_QUOTA_EXHAUSTED", null] },
+    "decision": { "$ref": "qas30_ai_selection_decision.schema.json" },
+    "attempts": {
+      "type": "array", "minItems": 1, "maxItems": 3,
+      "items": { "$ref": "qas30_ai_attempt_audit.schema.json" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "provider": { "const": "DEEPSEEK" } }, "required": ["provider"] },
+      "then": { "properties": { "fallbackFrom": { "const": null } } }
+    },
+    {
+      "if": { "properties": { "provider": { "const": "MINIMAX" } }, "required": ["provider"] },
+      "then": { "properties": { "fallbackFrom": { "const": "DEEPSEEK_EXPLICIT_QUOTA_EXHAUSTED" } } }
+    }
+  ],
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$" },
+    "blockIdentifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

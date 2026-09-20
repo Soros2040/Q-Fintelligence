@@ -1,0 +1,4 @@
+# qf-algorithm 2.1.0 notebook interaction dependencies
+ipywidgets==8.1.9 --hash=sha256:f2b8cbcaae10252b809fbe4d7470db75c09b769a32cbf816d20e5ca6d3c5a79d
+jupyterlab_widgets==3.0.17 --hash=sha256:40ac1e9955acf116c4d995d9bfa082d86ad9ec6d91c4f134827cf5e0a5eb75e0
+widgetsnbextension==4.0.16 --hash=sha256:a31a8774885b96fe825462f5d6496166f0c7cae111195b6465c801d230eb5a4e

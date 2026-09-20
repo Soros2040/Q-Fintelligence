@@ -1,0 +1,21 @@
+* text=auto
+
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+*.pdf binary
+*.docx binary
+*.pptx binary
+*.xlsx binary
+workers/openhands_sidecar/vendor/*.whl binary
+workers/openhands_sidecar/**/*.py text eol=lf
+workers/openhands_sidecar/**/*.sh text eol=lf
+workers/openhands_sidecar/supply_chain/NOTICE text eol=lf
+workers/openhands_sidecar/supply_chain/*.patch text eol=lf whitespace=-trailing-space
+*.ipynb text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary

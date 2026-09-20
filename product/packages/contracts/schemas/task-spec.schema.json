@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/task-spec.qf.v1.json",
+  "title": "q-fintelligence TaskSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "taskId",
+    "scientificQuestion",
+    "asOfDate",
+    "state",
+    "model"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "qf.v1" },
+    "taskId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "scientificQuestion": { "type": "string", "minLength": 1, "maxLength": 8000 },
+    "asOfDate": { "type": "string", "format": "date" },
+    "state": {
+      "enum": [
+        "DRAFT",
+        "SPECIFIED",
+        "APPROVED",
+        "RUNNING",
+        "PAUSED",
+        "BLOCKED",
+        "FAILED",
+        "VALIDATED",
+        "DELIVERED"
+      ]
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "modelId", "selectedAt", "capabilityCheckId"],
+      "properties": {
+        "provider": { "type": "string", "minLength": 1 },
+        "modelId": { "type": "string", "minLength": 1 },
+        "selectedAt": { "type": "string", "format": "date-time" },
+        "capabilityCheckId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "protocolHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "experiment_id": "E01",
+  "title": "数据、数学接口与Bridge",
+  "task_id": "SYNTHETIC_MATH_INTERFACES",
+  "statistical_unit": "FROZEN_CONTRACT_CASE",
+  "archived_execution_status": "LOCAL_COMPARISONS_COMPLETE",
+  "archived_scientific_status": "LOCAL_VERIFIED",
+  "source_result_sha256": "052c9bcc980eea09b73f1ae0d0e776c1bdf24ea44ac5f58173360d7150914897",
+  "source_snapshot": "2026-09-07 to 2026-09-09",
+  "evidence_type": "curated archived summary; not a new execution",
+  "synthetic_case_count": 60,
+  "total_binary_states": 12516,
+  "maximum_identity_error": 4.163336342344337e-17,
+  "all_perturbation_bounds_hold": true
+}

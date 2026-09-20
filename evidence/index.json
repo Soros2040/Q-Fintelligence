@@ -1,0 +1,43 @@
+{
+  "schema": "qf.public-evidence.v1",
+  "snapshot_date": "2026-09-09",
+  "review_date": "2026-09-20",
+  "entries": [
+    {
+      "experiment_id": "E01",
+      "file": "E01.json",
+      "source_result_sha256": "052c9bcc980eea09b73f1ae0d0e776c1bdf24ea44ac5f58173360d7150914897"
+    },
+    {
+      "experiment_id": "E02",
+      "file": "E02.json",
+      "source_result_sha256": "9ef2c585bd17b17d576ef48e284306041bc114b9a6d01411da47375f970f41d2"
+    },
+    {
+      "experiment_id": "E03",
+      "file": "E03.json",
+      "source_result_sha256": "83d5d9224ea5bd0e40da0b5b11e9133941705a4c3c3020880858c90efb3e5de3"
+    },
+    {
+      "experiment_id": "E04",
+      "file": "E04.json",
+      "source_result_sha256": "9bf9cf45585b2b79bfaebddef133e734dcc36e91c3919d9cb18df86675808353"
+    },
+    {
+      "experiment_id": "E05",
+      "file": "E05.json",
+      "source_result_sha256": "63a75b4a34819caedf003de5df4a2ea2db331f3b7f20d781e8b1e6ae7931d79b"
+    },
+    {
+      "experiment_id": "E06",
+      "file": "E06.json",
+      "source_result_sha256": "ca7f35b715039350d18e89b393f961b419c5cf7d75c34b61b02c7241117c05b0"
+    },
+    {
+      "experiment_id": "E07",
+      "file": "E07.json",
+      "source_result_sha256": "234f0be4672cbb7c25618910e7842149b4d3f15c68652dc581f93e40be540b0c"
+    }
+  ],
+  "scope": "Team-owned selected numerical summaries; original market panels and provider receipts stay in the source archive."
+}

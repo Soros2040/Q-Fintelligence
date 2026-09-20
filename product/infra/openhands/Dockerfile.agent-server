@@ -1,0 +1,62 @@
+FROM node:24.18.0-bookworm-slim AS node-runtime
+
+FROM python:3.12.13-slim-bookworm
+
+ARG OPENHANDS_VERSION=1.39.0
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    NPM_CONFIG_AUDIT=false \
+    NPM_CONFIG_FUND=false \
+    OPENHANDS_SUPPRESS_BANNER=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PATH=/opt/qf/python/bin:/opt/qf/deps/node_modules/.bin:${PATH} \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    VIRTUAL_ENV=/opt/qf/python
+
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends bash ca-certificates git tini \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=node-runtime /usr/local/bin/ /usr/local/bin/
+COPY --from=node-runtime /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
+
+RUN python -m pip install --no-cache-dir "uv==0.11.29"
+
+COPY package.json package-lock.json /opt/qf/deps/
+COPY apps/control-plane/package.json /opt/qf/deps/apps/control-plane/package.json
+COPY apps/web/package.json /opt/qf/deps/apps/web/package.json
+COPY packages/contracts/package.json /opt/qf/deps/packages/contracts/package.json
+COPY workers/openhands_sidecar/pyproject.toml /opt/qf/deps/workers/openhands_sidecar/pyproject.toml
+COPY workers/openhands_sidecar/uv.lock /opt/qf/deps/workers/openhands_sidecar/uv.lock
+COPY workers/openhands_sidecar/vendor/ /opt/qf/deps/workers/openhands_sidecar/vendor/
+
+RUN cd /opt/qf/deps \
+    && npm ci \
+    && UV_PROJECT_ENVIRONMENT=/opt/qf/python uv sync \
+      --project /opt/qf/deps/workers/openhands_sidecar \
+      --frozen \
+      --no-dev \
+      --no-install-project \
+    && /opt/qf/python/bin/python -c \
+      "import importlib.metadata as m; expected={'openhands-sdk':'1.39.0+qf.noobservability.1','openhands-tools':'${OPENHANDS_VERSION}','openhands-workspace':'${OPENHANDS_VERSION}','openhands-agent-server':'${OPENHANDS_VERSION}'}; assert all(m.version(p)==v for p,v in expected.items())" \
+    && groupadd --gid 10001 openhands \
+    && useradd --uid 10001 --gid 10001 --create-home --shell /bin/bash openhands \
+    && mkdir -p /workspace /openhands-state \
+    && chown -R 10001:10001 /workspace /openhands-state /home/openhands \
+    && rm -rf /root/.cache /root/.npm
+
+COPY --chown=10001:10001 \
+  infra/openhands/agent_server_entrypoint.py \
+  infra/openhands/egress_proxy.py \
+  infra/openhands/ingress_proxy.py \
+  infra/openhands/unix_ingress_proxy.py \
+  /opt/qf/
+COPY --chown=10001:10001 \
+  workers/openhands_sidecar/qf_openhands/ \
+  /opt/qf/runtime/qf_openhands/
+
+WORKDIR /workspace
+USER 10001:10001
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["/opt/qf/python/bin/python", "/opt/qf/agent_server_entrypoint.py", "--host", "0.0.0.0", "--port", "8000"]

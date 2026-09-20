@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/qf.v1/agent-workspace.schema.json",
+  "title": "q-fintelligence agent workspace contracts",
+  "oneOf": [
+    { "$ref": "#/$defs/projectSummary" },
+    { "$ref": "#/$defs/conversationSummary" },
+    { "$ref": "#/$defs/agentSessionSummary" },
+    { "$ref": "#/$defs/toolCallInboxEntry" },
+    { "$ref": "#/$defs/messageRecord" },
+    { "$ref": "#/$defs/agentUiEvent" },
+    { "$ref": "#/$defs/agentWorkspaceEvent" },
+    { "$ref": "#/$defs/conversationSnapshot" },
+    { "$ref": "#/$defs/createProjectCommand" },
+    { "$ref": "#/$defs/createConversationCommand" },
+    { "$ref": "#/$defs/switchConversationModelCommand" },
+    { "$ref": "#/$defs/sendMessageCommand" },
+    { "$ref": "#/$defs/approvalDecisionCommand" }
+  ],
+  "$defs": {
+    "schemaVersion": { "const": "qf.v1" },
+    "isoDateTime": { "type": "string", "format": "date-time" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "projectSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "projectId", "name", "description", "archived", "createdAt", "updatedAt"],
+      "properties": {
+        "schemaVersion": { "$ref": "#/$defs/schemaVersion" },
+        "projectId": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "archived": { "type": "boolean" },
+        "createdAt": { "$ref": "#/$defs/isoDateTime" },
+        "updatedAt": { "$ref": "#/$defs/isoDateTime" }
+      }
+    },
+    "conversationSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "conversationId", "projectId", "taskId", "title", "mode", "state", "provider", "modelId", "archived", "lastActivityAt", "createdAt"],
+      "properties": {
+        "schemaVersion": { "$ref": "#/$defs/schemaVersion" },
+        "conversationId": { "type": "string", "minLength": 1 },
+        "projectId": { "type": "string", "minLength": 1 },
+        "taskId": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "mode": { "enum": ["MOCK", "OPENHANDS", "PI"] },
+        "state": { "enum": ["DRAFT", "RUNNING", "PAUSED", "BLOCKED", "FAILED", "COMPLETED", "ABORTED"] },
+        "provider": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "modelId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "archived": { "type": "boolean" },
+        "lastActivityAt": { "$ref": "#/$defs/isoDateTime" },
+        "createdAt": { "$ref": "#/$defs/isoDateTime" }
+      }
+    },
+    "agentSessionSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "sessionId", "runtimeKind", "runtimeRevision", "configHash", "recoveryCursor", "provider", "modelId", "promptVersion", "promptHash", "lifecycleState", "relativeSessionFile"],
+      "properties": {
+        "schemaVersion": { "$ref": "#/$defs/schemaVersion" },
+        "sessionId": { "type": "string", "minLength": 1 },
+        "runtimeKind": { "enum": ["MOCK", "OPENHANDS", "PI"] },
+        "runtimeRevision": { "type": "string", "minLength": 1 },
+        "configHash": { "$ref": "#/$defs/sha256" },
+        "recoveryCursor": { "type": "integer", "minimum": 0 },
+        "provider": { "type": "string", "minLength": 1 },
+        "modelId": { "type": "string", "minLength": 1 },
+        "promptVersion": { "type": "string", "minLength": 1 },
+        "promptHash": { "$ref": "#/$defs/sha256" },
+        "lifecycleState": { "type": "string", "minLength": 1 },
+        "relativeSessionFile": { "oneOf": [{ "type": "string" }, { "type": "null" }] }
+      }
+    },
+    "toolCallInboxEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "conversationId", "runtimeSessionId", "toolCallId", "toolName", "requestHash", "status", "result", "error", "claimedAt", "finishedAt", "updatedAt"],
+      "properties": {
+        "schemaVersion": { "$ref": "#/$defs/schemaVersion" },
+        "conversationId": { "type": "string", "minLength": 1 },
+        "runtimeSessionId": { "type": "string", "minLength": 1 },
+        "toolCallId": { "type": "string", "minLength": 1 },
+        "toolName": { "type": "string", "minLength": 1 },
+        "requestHash": { "$ref": "#/$defs/sha256" },
+        "status": { "enum": ["RUNNING", "UNKNOWN", "COMPLETED", "FAILED"] },
+        "result": { "$ref": "#/$defs/jsonValue" },
+        "error": { "oneOf": [{ "type": "object", "additionalProperties": { "$ref": "#/$defs/jsonValue" } }, { "type": "null" }] },
+        "claimedAt": { "$ref": "#/$defs/isoDateTime" },
+        "finishedAt": { "oneOf": [{ "$ref": "#/$defs/isoDateTime" }, { "type": "null" }] },
+        "updatedAt": { "$ref": "#/$defs/isoDateTime" }
+      }
+    },
+    "messageRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "messageId", "conversationId", "role", "content", "provider", "modelId", "piMessageId", "createdAt"],
+      "properties": {
+        "schemaVersion": { "$ref": "#/$defs/schemaVersion" },
+        "messageId": { "type": "string", "minLength": 1 },
+        "conversationId": { "type": "string", "minLength": 1 },
+        "role": { "enum": ["USER", "ASSISTANT", "SYSTEM"] },
+        "content": { "type": "string" },
+        "provider": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "modelId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "piMessageId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "createdAt": { "$ref": "#/$defs/isoDateTime" }
+      }
+    },
+    "jsonValue": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "boolean" },
+        { "type": "null" },
+        { "type": "array", "items": { "$ref": "#/$defs/jsonValue" } },
+        { "type": "object", "additionalProperties": { "$ref": "#/$defs/jsonValue" } }
+      ]
+    },
+    "agentUiEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "eventId", "conversationId", "taskId", "runId", "sequence", "persistent", "type", "payload", "createdAt"],
+      "properties": {
+        "schemaVersion": { "$ref": "#/$defs/schemaVersion" },
+        "eventId": { "type": "string", "minLength": 1 },
+        "conversationId": { "type": "string", "minLength": 1 },
+        "taskId": { "type": "string", "minLength": 1 },
+        "runId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "sequence": { "oneOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }] },
+        "persistent": { "type": "boolean" },
+        "type": { "enum": ["agent.started", "agent.completed", "agent.aborted", "turn.started", "turn.completed", "assistant.delta", "tool.started", "tool.progress", "tool.completed", "step.changed", "artifact.created", "approval.requested", "approval.resolved", "run.blocked", "run.failed", "run.started", "run.heartbeat", "run.completed", "security.quarantined", "model.changed", "rename.completed", "model.request", "model.usage", "hardware.batch", "message.completed", "queue.changed", "retry.started", "retry.completed", "compaction.started", "compaction.completed"] },
+        "payload": { "type": "object", "additionalProperties": { "$ref": "#/$defs/jsonValue" } },
+        "createdAt": { "$ref": "#/$defs/isoDateTime" },
+        "workspace": { "$ref": "#/$defs/agentWorkspaceEvent" }
+      }
+    },
+    "agentWorkspaceEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "sourceEventId", "kind", "taskId", "conversationId", "runId", "agentId", "sequence", "timestamp", "summary", "stage", "detailRefs", "sensitivity"],
+      "properties": {
+        "schemaVersion": { "const": "qf.workspace-event.v1" },
+        "sourceEventId": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["task_started", "stage_changed", "agent_activity", "stream_delta", "tool_started", "tool_progress", "tool_completed", "tool_failed", "waiting", "heartbeat", "retrying", "recovered", "artifact_created", "result_ready", "blocked", "stopped", "completed"] },
+        "taskId": { "type": "string", "minLength": 1 },
+        "conversationId": { "type": "string", "minLength": 1 },
+        "runId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "agentId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "sequence": { "oneOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }] },
+        "timestamp": { "$ref": "#/$defs/isoDateTime" },
+        "summary": { "type": "string", "minLength": 1 },
+        "stage": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "detailRefs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["eventId", "runId", "artifactHashes", "queryId"],
+          "properties": {
+            "eventId": { "type": "string", "minLength": 1 },
+            "runId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+            "artifactHashes": { "type": "array", "items": { "$ref": "#/$defs/sha256" }, "uniqueItems": true },
+            "queryId": { "oneOf": [{ "type": "string" }, { "type": "null" }] }
+          }
+        },
+        "sensitivity": { "enum": ["PUBLIC", "INTERNAL", "SENSITIVE_REDACTED"] }
+      }
+    },
+    "conversationSnapshot": {
+      "type": "object",
+      "required": ["schemaVersion", "conversation", "messages", "steps", "artifacts", "approvals", "session", "latestSequence", "capturedAt"],
+      "properties": {
+        "schemaVersion": { "$ref": "#/$defs/schemaVersion" },
+        "conversation": { "$ref": "#/$defs/conversationSummary" },
+        "messages": { "type": "array", "items": { "$ref": "#/$defs/messageRecord" } },
+        "steps": { "type": "array" },
+        "artifacts": { "type": "array" },
+        "approvals": { "type": "array" },
+        "session": { "oneOf": [{ "$ref": "#/$defs/agentSessionSummary" }, { "type": "null" }] },
+        "latestSequence": { "type": "integer", "minimum": 0 },
+        "capturedAt": { "$ref": "#/$defs/isoDateTime" }
+      }
+    },
+    "createProjectCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 2000 }
+      }
+    },
+    "createConversationCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "mode"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "mode": { "enum": ["MOCK", "OPENHANDS"] },
+        "provider": { "type": "string", "minLength": 1 },
+        "modelId": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "const": "OPENHANDS" } } },
+          "then": {
+            "required": ["provider", "modelId"],
+            "properties": {
+              "provider": { "type": "string", "minLength": 1 },
+              "modelId": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      ]
+    },
+    "switchConversationModelCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "modelId", "actor"],
+      "properties": {
+        "provider": { "enum": ["openai", "deepseek"] },
+        "modelId": { "enum": ["gpt-5.6", "deepseek-v4-pro"] },
+        "actor": { "const": "HUMAN" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "provider": { "const": "openai" } } },
+          "then": { "properties": { "modelId": { "const": "gpt-5.6" } } }
+        },
+        {
+          "if": { "properties": { "provider": { "const": "deepseek" } } },
+          "then": { "properties": { "modelId": { "const": "deepseek-v4-pro" } } }
+        }
+      ]
+    },
+    "sendMessageCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content"],
+      "properties": { "content": { "type": "string", "minLength": 1, "maxLength": 12000 } }
+    },
+    "approvalDecisionCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "actor"],
+      "properties": {
+        "decision": { "enum": ["APPROVE", "REJECT"] },
+        "actor": { "const": "HUMAN" }
+      }
+    }
+  }
+}

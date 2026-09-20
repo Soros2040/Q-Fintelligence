@@ -1,0 +1,311 @@
+{
+  "experiment_id": "E07",
+  "title": "整体方法与硬件迁移",
+  "task_id": "STOCK_MONTHLY_300_NEXT_MONTH_VISIBLE",
+  "statistical_unit": "HOLDING_INTERVAL",
+  "archived_execution_status": "LOCAL_COMPARISONS_COMPLETE",
+  "archived_scientific_status": "LOCAL_VERIFIED",
+  "source_result_sha256": "234f0be4672cbb7c25618910e7842149b4d3f15c68652dc581f93e40be540b0c",
+  "source_snapshot": "2026-09-07 to 2026-09-09",
+  "evidence_type": "curated archived summary; not a new execution",
+  "endpoints": [
+    {
+      "cost": 0.001,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.036949223810334005,
+      "method": "full",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.034203539648989895,
+        0.03825145992732999,
+        0.039560319296671496,
+        0.03490029730815515,
+        0.037830502870523496
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.38652018398263976,
+        0.4253883334848536,
+        0.39719734128829964,
+        0.3525550089087539,
+        0.36938411733582144
+      ],
+      "per_seed_mean_return": [
+        -8.325182222523302e-06,
+        -0.00012736432134096245,
+        0.00010108388798957463,
+        0.00016826676102914826,
+        0.00022628121704026927
+      ],
+      "per_seed_turnover": [
+        326.6518352385681,
+        337.7312861810191,
+        356.29716031592193,
+        337.533304932449,
+        344.10930436429607
+      ]
+    },
+    {
+      "cost": 0.001,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.027537305573265725,
+      "method": "classical",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.0269568455554636,
+        0.028462447480653134,
+        0.027694798001285926,
+        0.02677860957122904,
+        0.027793827257696916
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.2123012819790756,
+        0.24253347332459252,
+        0.23189603470705067,
+        0.228062448344717,
+        0.16957761927594783
+      ],
+      "per_seed_mean_return": [
+        0.0004885186438966254,
+        0.00021068091582189058,
+        0.00012892910273083205,
+        0.00040004003133759815,
+        0.0004557850146430587
+      ],
+      "per_seed_turnover": [
+        238.12412806857392,
+        256.61814241417125,
+        282.87086781659013,
+        250.52236451604037,
+        248.35156492476324
+      ]
+    },
+    {
+      "cost": 0.001,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.036949223810334005,
+      "method": "fixed",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.034203539648989895,
+        0.03825145992732999,
+        0.039560319296671496,
+        0.03490029730815515,
+        0.037830502870523496
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.38652018398263976,
+        0.4253883334848536,
+        0.39719734128829964,
+        0.3525550089087539,
+        0.36938411733582144
+      ],
+      "per_seed_mean_return": [
+        -8.325182222523302e-06,
+        -0.00012736432134096245,
+        0.00010108388798957463,
+        0.00016826676102914826,
+        0.00022628121704026927
+      ],
+      "per_seed_turnover": [
+        326.6518352385681,
+        337.7312861810191,
+        356.29716031592193,
+        337.533304932449,
+        344.10930436429607
+      ]
+    }
+  ],
+  "primary_comparisons": [
+    {
+      "block_length": 40,
+      "block_sensitivity": [
+        {
+          "block_length": 20,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            0.005536163350504777,
+            0.014005926530871696
+          ],
+          "effect": 0.00941191823706828,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.0009995002498750624,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        },
+        {
+          "block_length": 80,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            0.006692515690861621,
+            0.012729282477302503
+          ],
+          "effect": 0.00941191823706828,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.0004997501249375312,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        }
+      ],
+      "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        0.005976444309053102,
+        0.013364337180900488
+      ],
+      "comparison": "integrated_vs_classical_cvar",
+      "cost": 0.001,
+      "effect": 0.00941191823706828,
+      "endpoint": "cvar95",
+      "mdd_path_sensitivity": {
+        "block_length": 40,
+        "bootstrap_replicates": 2000,
+        "effect": 0.16933482547379697,
+        "path_bootstrap_interval95": [
+          0.03264791619044722,
+          0.35038323688369843
+        ],
+        "scope": "PATH_SENSITIVITY_WITH_FIXED_INITIAL_ENTRY_COST",
+        "seed_aggregation": "MDD_PER_SEED_THEN_MEAN"
+      },
+      "mean_return_difference": {
+        "block_length": 40,
+        "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+        "bootstrap_replicates": 2000,
+        "ci95": [
+          -0.0014015103320486587,
+          0.0009830425362543733
+        ],
+        "effect": -0.0002648022691868997,
+        "endpoint": "mean",
+        "n_dates": 485,
+        "n_seeds": 5,
+        "p_raw": 0.6676661669165417,
+        "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+        "tail_mass_per_seed": null
+      },
+      "method": "full",
+      "n_dates": 485,
+      "n_seeds": 5,
+      "p_holm": 0.0009995002498750624,
+      "p_raw": 0.0004997501249375312,
+      "reference": "classical",
+      "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+      "tail_mass_per_seed": 24.25
+    },
+    {
+      "block_length": 40,
+      "block_sensitivity": [
+        {
+          "block_length": 20,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "effect": 0.0,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 1.0,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        },
+        {
+          "block_length": 80,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "effect": 0.0,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 1.0,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        }
+      ],
+      "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "comparison": "integrated_vs_fixed_map_cvar",
+      "cost": 0.001,
+      "effect": 0.0,
+      "endpoint": "cvar95",
+      "mdd_path_sensitivity": {
+        "block_length": 40,
+        "bootstrap_replicates": 2000,
+        "effect": 0.0,
+        "path_bootstrap_interval95": [
+          0.0,
+          0.0
+        ],
+        "scope": "PATH_SENSITIVITY_WITH_FIXED_INITIAL_ENTRY_COST",
+        "seed_aggregation": "MDD_PER_SEED_THEN_MEAN"
+      },
+      "mean_return_difference": {
+        "block_length": 40,
+        "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+        "bootstrap_replicates": 2000,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "effect": 0.0,
+        "endpoint": "mean",
+        "n_dates": 485,
+        "n_seeds": 5,
+        "p_raw": 1.0,
+        "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+        "tail_mass_per_seed": null
+      },
+      "method": "full",
+      "n_dates": 485,
+      "n_seeds": 5,
+      "p_holm": 1.0,
+      "p_raw": 1.0,
+      "reference": "fixed",
+      "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+      "tail_mass_per_seed": 24.25
+    }
+  ],
+  "portfolio_scope": "fractional long-only adjusted-price total-return proxy; daily-volume and strict-open-limit execution proxy",
+  "terminal_scope": "main horizon shared across methods; delayed liquidation tail is reported in each trade ledger",
+  "bootstrap_scope": "stationarity, observed dependence and finite tail mass condition paired stationary-block interpretation",
+  "hardware_calls": 0,
+  "new_quantum_calls": 0,
+  "lambda": 10
+}

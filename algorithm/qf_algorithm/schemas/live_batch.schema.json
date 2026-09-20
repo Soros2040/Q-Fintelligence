@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-fintelligence.local/schemas/live_batch.schema.json",
+  "title": "QAS30 five-circuit live batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "protocolVersion",
+    "runId",
+    "batchId",
+    "stage",
+    "target",
+    "shots",
+    "state",
+    "sourceCommitSha",
+    "k0ConfigSha256",
+    "mappingSnapshotSha256",
+    "commonMeasurementPhysicalOrder",
+    "candidateIds",
+    "circuits"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "qf.qas30.live-batch.v1" },
+    "protocolVersion": { "const": "qf.qas30.protocol.v1" },
+    "runId": { "$ref": "#/$defs/identifier" },
+    "batchId": { "$ref": "#/$defs/identifier" },
+    "stage": { "enum": ["R1", "R2_AI", "R2_FIXED", "R2_RANDOM"] },
+    "target": { "const": "tianyan176" },
+    "shots": { "const": 1000 },
+    "state": { "const": "READY_FOR_FIRST_SUBMIT" },
+    "sourceCommitSha": { "$ref": "#/$defs/gitCommitSha" },
+    "k0ConfigSha256": { "$ref": "#/$defs/sha256" },
+    "mappingSnapshotSha256": { "$ref": "#/$defs/sha256" },
+    "commonMeasurementPhysicalOrder": { "$ref": "#/$defs/measurementOrder" },
+    "candidateIds": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/candidateId" }
+    },
+    "circuits": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/circuit" },
+      "$comment": "The runtime additionally binds candidateIds position-by-position to circuit.candidateId."
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$"
+    },
+    "candidateId": { "type": "string", "pattern": "^C(?:0[1-9]|[12][0-9]|30)$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "gitCommitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "measurementOrder": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^Q[0-9]{1,4}$" }
+    },
+    "circuit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateId",
+        "qcis",
+        "qcisSha256",
+        "regular",
+        "regularityReceiptSha256",
+        "measurementPhysicalOrder"
+      ],
+      "properties": {
+        "candidateId": { "$ref": "#/$defs/candidateId" },
+        "qcis": { "type": "string", "minLength": 1, "maxLength": 1048576 },
+        "qcisSha256": { "$ref": "#/$defs/sha256" },
+        "regular": { "const": true },
+        "regularityReceiptSha256": { "$ref": "#/$defs/sha256" },
+        "measurementPhysicalOrder": { "$ref": "#/$defs/measurementOrder" }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+# Local cache and generated output
+99_local_cache/
+artifacts/
+data/
+models/
+.local/
+.runtime/
+node_modules/
+**/dist/
+*.tsbuildinfo
+.venv/
+.pytest_cache/
+.ruff_cache/
+**/__pycache__/
+*.pyc
+*.sqlite
+*.sqlite3
+*.db
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+04_finance_models/agent_harness/runs/
+04_finance_models/agent_harness/.env
+04_finance_models/agent_harness/.pytest_cache/
+04_finance_models/agent_harness/**/__pycache__/
+04_finance_models/agent_harness/**/*.pyc
+04_finance_models/agent_harness_frontend_demo/node_modules/
+04_finance_models/agent_harness_frontend_demo/dist/
+.vscode/
+
+# Large presentation artifacts remain local and are not synchronized to Gitee.
+07_presentations/**/*.docx
+*.pptx
+*.zip
+*.7z
+*.rar
+
+# Common temporary and operating-system files
+~$*
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

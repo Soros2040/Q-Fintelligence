@@ -1,0 +1,247 @@
+{
+  "state": "COMPLETED",
+  "created_at": "2026-09-08T05:51:05.827173+00:00",
+  "experiment_id": "E07",
+  "circuit_count": 1000,
+  "observed_calibration_snapshots": 1,
+  "statistics": {
+    "bootstrap_blocks": "Original five-circuit submission batches, stratified by circuit family",
+    "inferential_p_values": null,
+    "interval": "95 percent percentile conditional descriptive intervals",
+    "observed_calibration_snapshots": 1,
+    "paired_bootstrap_resamples": 2000,
+    "role": "DESCRIPTIVE_SECONDARY_HARDWARE_TRANSFER_ANALYSIS",
+    "scope": "Conditional on these frozen circuits and the one observed calibration snapshot. Submission blocks do not constitute independent calibration replicates.",
+    "seed": 2026090807,
+    "statistical_unit": "CIRCUIT_X_OBSERVED_CALIBRATION_SNAPSHOT",
+    "timing": "AFTER_HARDWARE_RESULTS_BEFORE_NEW_MATCHED_REFERENCE_RESULTS"
+  },
+  "hardware_shots": 1024000,
+  "local_finite_shots": 1024000,
+  "family_results": {
+    "message": {
+      "circuits": 500,
+      "submission_blocks": 100,
+      "metrics": {
+        "compiled_gate_count": {
+          "mean": 95.0,
+          "conditional_ci95": [
+            95.0,
+            95.0
+          ]
+        },
+        "compiled_two_qubit_count": {
+          "mean": 29.0,
+          "conditional_ci95": [
+            29.0,
+            29.0
+          ]
+        },
+        "compiled_depth": {
+          "mean": 48.0,
+          "conditional_ci95": [
+            48.0,
+            48.0
+          ]
+        },
+        "hardware_vs_ideal_tv": {
+          "mean": 0.16651977123958503,
+          "conditional_ci95": [
+            0.16328856413983073,
+            0.1699322121958956
+          ]
+        },
+        "hardware_vs_ideal_h2": {
+          "mean": 0.025988454714048613,
+          "conditional_ci95": [
+            0.024513145555503393,
+            0.027705443135384776
+          ]
+        },
+        "finite_vs_ideal_tv": {
+          "mean": 0.08709898392111574,
+          "conditional_ci95": [
+            0.08574974689149491,
+            0.08844567167871815
+          ]
+        },
+        "finite_vs_ideal_h2": {
+          "mean": 0.00853138249458903,
+          "conditional_ci95": [
+            0.008392395145645848,
+            0.008688191711118764
+          ]
+        },
+        "local_noise_vs_ideal_tv": {
+          "mean": 0.07848740919423892,
+          "conditional_ci95": [
+            0.0748166090745204,
+            0.08272610239106805
+          ]
+        },
+        "local_noise_vs_ideal_h2": {
+          "mean": 0.007938395584938201,
+          "conditional_ci95": [
+            0.006632086934322665,
+            0.00955256887573466
+          ]
+        },
+        "hardware_vs_local_noise_tv": {
+          "mean": 0.15623398388822898,
+          "conditional_ci95": [
+            0.15445575383411977,
+            0.1580101561324969
+          ]
+        },
+        "hardware_vs_local_noise_h2": {
+          "mean": 0.02230090672991785,
+          "conditional_ci95": [
+            0.021882718739009554,
+            0.02273470180847505
+          ]
+        },
+        "hardware_noise_minus_ideal_tv": {
+          "mean": -0.010285787351356062,
+          "conditional_ci95": [
+            -0.014036992570725897,
+            -0.006915246527670947
+          ]
+        },
+        "hardware_excess_over_finite_tv": {
+          "mean": 0.0794207873184693,
+          "conditional_ci95": [
+            0.07521926797093972,
+            0.08377122725998588
+          ]
+        }
+      }
+    },
+    "qaoa": {
+      "circuits": 500,
+      "submission_blocks": 100,
+      "metrics": {
+        "compiled_gate_count": {
+          "mean": 731.01,
+          "conditional_ci95": [
+            666.4775,
+            794.5915
+          ]
+        },
+        "compiled_two_qubit_count": {
+          "mean": 179.88,
+          "conditional_ci95": [
+            164.45850000000002,
+            195.12449999999998
+          ]
+        },
+        "compiled_depth": {
+          "mean": 419.08,
+          "conditional_ci95": [
+            379.62925,
+            459.03574999999995
+          ]
+        },
+        "hardware_vs_ideal_tv": {
+          "mean": 0.8870040803853533,
+          "conditional_ci95": [
+            0.875835173214173,
+            0.8991217247194471
+          ]
+        },
+        "hardware_vs_ideal_h2": {
+          "mean": 0.6987104567641577,
+          "conditional_ci95": [
+            0.6820947662567809,
+            0.7160405673852902
+          ]
+        },
+        "finite_vs_ideal_tv": {
+          "mean": 0.01990616960764527,
+          "conditional_ci95": [
+            0.016814156221602337,
+            0.022747386122311936
+          ]
+        },
+        "finite_vs_ideal_h2": {
+          "mean": 0.0010438758626030306,
+          "conditional_ci95": [
+            0.0008572050971941403,
+            0.0012199699578870386
+          ]
+        },
+        "local_noise_vs_ideal_tv": {
+          "mean": 0.8103635760561895,
+          "conditional_ci95": [
+            0.7979248969702629,
+            0.8234051288150043
+          ]
+        },
+        "local_noise_vs_ideal_h2": {
+          "mean": 0.5832156571897428,
+          "conditional_ci95": [
+            0.5672796794116758,
+            0.6003580081843024
+          ]
+        },
+        "hardware_vs_local_noise_tv": {
+          "mean": 0.23501331162317396,
+          "conditional_ci95": [
+            0.21665680943470028,
+            0.254539177225424
+          ]
+        },
+        "hardware_vs_local_noise_h2": {
+          "mean": 0.04662683162579588,
+          "conditional_ci95": [
+            0.04018155327002613,
+            0.05361590346926267
+          ]
+        },
+        "hardware_noise_minus_ideal_tv": {
+          "mean": -0.6519907687621794,
+          "conditional_ci95": [
+            -0.6673809979968671,
+            -0.6376942037757092
+          ]
+        },
+        "hardware_excess_over_finite_tv": {
+          "mean": 0.8670979107777081,
+          "conditional_ci95": [
+            0.8530535874332029,
+            0.8820210430047369
+          ]
+        },
+        "hardware_feasible_k3": {
+          "mean": 0.31510742187499996,
+          "conditional_ci95": [
+            0.31273227539062504,
+            0.31765512695312514
+          ]
+        },
+        "finite_feasible_k3": {
+          "mean": 1.0,
+          "conditional_ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "ideal_feasible_k3": {
+          "mean": 1.0,
+          "conditional_ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "local_noise_feasible_k3": {
+          "mean": 0.35224448827794935,
+          "conditional_ci95": [
+            0.3453473443130723,
+            0.35930369861397393
+          ]
+        }
+      }
+    }
+  },
+  "source_result_sha256": "a8d32de5102586fe8147a6636ee6030fc57834da960cffd3b14401935cfd953b",
+  "evidence_type": "curated archived summary; not a new execution"
+}

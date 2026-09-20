@@ -1,0 +1,17 @@
+[project]
+name = "q-fintelligence-quantum-worker"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "pydantic==2.12.5",
+]
+
+[project.scripts]
+qf-quantum-worker = "qf_quantum_worker.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qf_quantum_worker"]

@@ -1,0 +1,1107 @@
+{
+  "experiment_id": "E04",
+  "title": "风险到组合决策",
+  "task_id": "STOCK_MONTHLY_300_NEXT_MONTH_VISIBLE",
+  "statistical_unit": "HOLDING_INTERVAL",
+  "archived_execution_status": "LOCAL_COMPARISONS_COMPLETE",
+  "archived_scientific_status": "LOCAL_VERIFIED",
+  "source_result_sha256": "9bf9cf45585b2b79bfaebddef133e734dcc36e91c3919d9cb18df86675808353",
+  "source_snapshot": "2026-09-07 to 2026-09-09",
+  "evidence_type": "curated archived summary; not a new execution",
+  "endpoints": [
+    {
+      "cost": 0,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.02982075797249927,
+      "method": "classical_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.028230715554188962,
+        0.030256077647389284,
+        0.030936218771246082,
+        0.030080965908665866,
+        0.029599811981006127
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        28,
+        29,
+        29,
+        29
+      ],
+      "per_seed_maximum_drawdown": [
+        0.21655444663172663,
+        0.22061860796514632,
+        0.2307552387283871,
+        0.21420518939651845,
+        0.19703178625130213
+      ],
+      "per_seed_mean_return": [
+        0.0005693352508877336,
+        0.0006945417984962946,
+        0.00036042238806681626,
+        0.0005704734392006873,
+        0.0006779186465930818
+      ],
+      "per_seed_turnover": [
+        645.3933159779353,
+        630.913063853993,
+        668.8692313861868,
+        661.6879993806065,
+        647.8342960858656
+      ]
+    },
+    {
+      "cost": 0,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.036279583835799885,
+      "method": "selected_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03571799058875039,
+        0.03690938865089969,
+        0.03696861592659473,
+        0.035501606527499174,
+        0.036300317485255446
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.34804677101824233,
+        0.41440837776703954,
+        0.3902671321685789,
+        0.3861399121595839,
+        0.3903889030731479
+      ],
+      "per_seed_mean_return": [
+        0.0009791838236026902,
+        0.0007280866018708097,
+        0.0009222239627925056,
+        0.001125113374458342,
+        0.0008233763065611929
+      ],
+      "per_seed_turnover": [
+        619.841926969733,
+        607.9763072917199,
+        621.1032227705011,
+        650.5070307665833,
+        627.6672504285111
+      ]
+    },
+    {
+      "cost": 0,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03457090709666562,
+      "method": "selected_shrinkage",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03443464283737916,
+        0.03474693538108499,
+        0.034572443221998095,
+        0.034492574008584166,
+        0.03460794003428169
+      ],
+      "per_seed_delayed_exit_count": [
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "per_seed_maximum_drawdown": [
+        0.3449419987553266,
+        0.4222550267434405,
+        0.3933863510614023,
+        0.37219124933166525,
+        0.362589850189199
+      ],
+      "per_seed_mean_return": [
+        0.001044048106688639,
+        0.000507599920021208,
+        0.0007936868415092199,
+        0.0008575008092439462,
+        0.0009520238717938212
+      ],
+      "per_seed_turnover": [
+        629.4418826481128,
+        618.4681427565635,
+        621.0509096347027,
+        659.9993443866463,
+        636.1650445530761
+      ]
+    },
+    {
+      "cost": 0,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03526209603353571,
+      "method": "selected_readout_risk",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03484194514574658,
+        0.036342113153191274,
+        0.03521652885621188,
+        0.03403782679010126,
+        0.03587206622242752
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        27,
+        27,
+        28,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.3405357210930885,
+        0.3662057530426318,
+        0.3943093084025744,
+        0.3626813457653837,
+        0.35632323907266195
+      ],
+      "per_seed_mean_return": [
+        0.0006470995991095954,
+        0.0006534940886291349,
+        0.0005968575871200337,
+        0.0008219157119020629,
+        0.0007947575333600834
+      ],
+      "per_seed_turnover": [
+        607.6321743751776,
+        597.3207979167848,
+        619.6307938075611,
+        644.5190973800325,
+        614.434087247071
+      ]
+    },
+    {
+      "cost": 0.0005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.0293073717507555,
+      "method": "classical_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.029093519082145556,
+        0.030482823700085662,
+        0.02999325817170777,
+        0.029090602458687026,
+        0.02787665534115149
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        28,
+        29,
+        29,
+        28
+      ],
+      "per_seed_maximum_drawdown": [
+        0.2482912633995641,
+        0.22459959282818998,
+        0.20306584103493175,
+        0.2660676068358061,
+        0.22929813849387903
+      ],
+      "per_seed_mean_return": [
+        -0.0002076259699902244,
+        3.503543221565466e-05,
+        0.00021968642358950497,
+        -9.520433110172902e-05,
+        0.00020677187393526914
+      ],
+      "per_seed_turnover": [
+        377.091777867429,
+        385.7547649801174,
+        433.9058456611134,
+        399.39083023286605,
+        393.62053677510625
+      ]
+    },
+    {
+      "cost": 0.0005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03677345590058222,
+      "method": "selected_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.034370135180972726,
+        0.038786787711327556,
+        0.03714458135179021,
+        0.03631211845961899,
+        0.03725365679920164
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.35047861582933626,
+        0.4625261147187666,
+        0.41512444944375615,
+        0.4078822643436373,
+        0.4212132320032874
+      ],
+      "per_seed_mean_return": [
+        0.0006428672280273695,
+        0.00014537103750967027,
+        4.4097827628296694e-05,
+        0.00024678316613985376,
+        0.0003579359710957647
+      ],
+      "per_seed_turnover": [
+        445.83008015099074,
+        448.3721992240072,
+        462.740611549156,
+        458.5392871757166,
+        461.0605901829518
+      ]
+    },
+    {
+      "cost": 0.0005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03531323322143558,
+      "method": "selected_shrinkage",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03334444440241322,
+        0.03558527278955988,
+        0.037522230702380005,
+        0.033379759150862984,
+        0.0367344590619618
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        28,
+        28,
+        28,
+        1
+      ],
+      "per_seed_maximum_drawdown": [
+        0.37557021640061194,
+        0.43250857789126274,
+        0.4033999606254469,
+        0.3616566822913737,
+        0.4122490807416075
+      ],
+      "per_seed_mean_return": [
+        0.00033867567224905377,
+        -0.00010602145670902251,
+        0.0003957373211136984,
+        0.0005771012586642752,
+        -1.5838142654514296e-05
+      ],
+      "per_seed_turnover": [
+        443.9099935186257,
+        439.6142794539754,
+        459.127330547999,
+        462.77301560928834,
+        455.99117486495965
+      ]
+    },
+    {
+      "cost": 0.0005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.0354635764892154,
+      "method": "selected_readout_risk",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03496874784485812,
+        0.03572945497749086,
+        0.03537464761457331,
+        0.03518082454398261,
+        0.03606420746517207
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        27,
+        27,
+        28,
+        28
+      ],
+      "per_seed_maximum_drawdown": [
+        0.3828828349088418,
+        0.3938459101740335,
+        0.3861773852011089,
+        0.39698398044383965,
+        0.38223698911453363
+      ],
+      "per_seed_mean_return": [
+        3.3828570486793326e-05,
+        0.00013232309682575892,
+        0.00011235271785483009,
+        0.00013481572468665163,
+        0.00016491904517997033
+      ],
+      "per_seed_turnover": [
+        413.24742008914245,
+        427.22329056745457,
+        439.913059493619,
+        435.08730099823447,
+        433.59204528661263
+      ]
+    },
+    {
+      "cost": 0.001,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.027537305573265725,
+      "method": "classical_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.0269568455554636,
+        0.028462447480653134,
+        0.027694798001285926,
+        0.02677860957122904,
+        0.027793827257696916
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.2123012819790756,
+        0.24253347332459252,
+        0.23189603470705067,
+        0.228062448344717,
+        0.16957761927594783
+      ],
+      "per_seed_mean_return": [
+        0.0004885186438966254,
+        0.00021068091582189058,
+        0.00012892910273083205,
+        0.00040004003133759815,
+        0.0004557850146430587
+      ],
+      "per_seed_turnover": [
+        238.12412806857392,
+        256.61814241417125,
+        282.87086781659013,
+        250.52236451604037,
+        248.35156492476324
+      ]
+    },
+    {
+      "cost": 0.001,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.036949223810334005,
+      "method": "selected_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.034203539648989895,
+        0.03825145992732999,
+        0.039560319296671496,
+        0.03490029730815515,
+        0.037830502870523496
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.38652018398263976,
+        0.4253883334848536,
+        0.39719734128829964,
+        0.3525550089087539,
+        0.36938411733582144
+      ],
+      "per_seed_mean_return": [
+        -8.325182222523302e-06,
+        -0.00012736432134096245,
+        0.00010108388798957463,
+        0.00016826676102914826,
+        0.00022628121704026927
+      ],
+      "per_seed_turnover": [
+        326.6518352385681,
+        337.7312861810191,
+        356.29716031592193,
+        337.533304932449,
+        344.10930436429607
+      ]
+    },
+    {
+      "cost": 0.001,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.035535893564484486,
+      "method": "selected_shrinkage",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03471621545903666,
+        0.03618234533485653,
+        0.03687146682092949,
+        0.03342286420673876,
+        0.036486576000860985
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        26,
+        28,
+        28,
+        1
+      ],
+      "per_seed_maximum_drawdown": [
+        0.35306672347380275,
+        0.35184527125402687,
+        0.3937433375449191,
+        0.36843726450751746,
+        0.3859455433093707
+      ],
+      "per_seed_mean_return": [
+        -2.030536814827265e-05,
+        0.0005264094320922284,
+        0.0002470005723038572,
+        0.00023612640990630475,
+        0.00016534348250073322
+      ],
+      "per_seed_turnover": [
+        329.68137898214786,
+        335.10035914861356,
+        358.8831521209183,
+        337.79832662070305,
+        344.7693867747333
+      ]
+    },
+    {
+      "cost": 0.001,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03536848737643077,
+      "method": "selected_readout_risk",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.034557627858750606,
+        0.0360754247737887,
+        0.03624286282790514,
+        0.033957304974545494,
+        0.03600921644716392
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        28,
+        28,
+        28,
+        28
+      ],
+      "per_seed_maximum_drawdown": [
+        0.39288972520003973,
+        0.3633829143595605,
+        0.3382206833591739,
+        0.3520980295381523,
+        0.3465953477413162
+      ],
+      "per_seed_mean_return": [
+        -0.0003204548773571733,
+        -7.699285449593382e-05,
+        0.00021979373735312195,
+        2.704677923451825e-05,
+        -0.0002463655765628911
+      ],
+      "per_seed_turnover": [
+        304.2959545137691,
+        320.1968538611365,
+        329.61148908858314,
+        314.03688150572646,
+        316.411946387238
+      ]
+    },
+    {
+      "cost": 0.002,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.02775492499279375,
+      "method": "classical_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.027195581685252674,
+        0.02833747785243778,
+        0.028649375038686323,
+        0.02739079954236486,
+        0.02720139084522713
+      ],
+      "per_seed_delayed_exit_count": [
+        36,
+        37,
+        27,
+        36,
+        36
+      ],
+      "per_seed_maximum_drawdown": [
+        0.23373455143149935,
+        0.2633798409085093,
+        0.2573636356272344,
+        0.20396058458961375,
+        0.23816990016614548
+      ],
+      "per_seed_mean_return": [
+        0.00010886640667953863,
+        0.0001770648756701246,
+        -0.00024897134722518677,
+        0.00039106770680629165,
+        -5.7457524314934015e-05
+      ],
+      "per_seed_turnover": [
+        106.57752870717229,
+        135.08024967047055,
+        140.73123970733312,
+        109.82902277722565,
+        113.86560065845242
+      ]
+    },
+    {
+      "cost": 0.002,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.037564960031363295,
+      "method": "selected_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.034805517049711354,
+        0.039510264649811805,
+        0.03867809850633639,
+        0.036404404079757924,
+        0.038426515871198996
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        27,
+        28,
+        28,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.33366106804179474,
+        0.36716935823521857,
+        0.35890486082242135,
+        0.3704618476728655,
+        0.37645044331772903
+      ],
+      "per_seed_mean_return": [
+        7.688347589597553e-05,
+        0.00011398458657674899,
+        -5.408016231288649e-05,
+        0.0003975852466326763,
+        0.0003858834434993578
+      ],
+      "per_seed_turnover": [
+        202.37257408935244,
+        225.7610967444968,
+        226.99762338736807,
+        207.29848494020646,
+        213.10089152262466
+      ]
+    },
+    {
+      "cost": 0.002,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03631556720787659,
+      "method": "selected_shrinkage",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03514415015095734,
+        0.03814869208854714,
+        0.036956206940861366,
+        0.034507843426652966,
+        0.036820943432364146
+      ],
+      "per_seed_delayed_exit_count": [
+        28,
+        28,
+        28,
+        28,
+        28
+      ],
+      "per_seed_maximum_drawdown": [
+        0.39717447508484094,
+        0.3765879560882732,
+        0.3900486326690018,
+        0.3726210298655307,
+        0.353152848097553
+      ],
+      "per_seed_mean_return": [
+        4.798679409968484e-05,
+        0.0003279361154002889,
+        -0.00011858310282175174,
+        0.00029927189797015303,
+        0.00029633727858967046
+      ],
+      "per_seed_turnover": [
+        201.88816668193007,
+        221.3649074514115,
+        223.58019851806597,
+        203.47511551892492,
+        216.70833643109066
+      ]
+    },
+    {
+      "cost": 0.002,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.036151793266896694,
+      "method": "selected_readout_risk",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03471638952411252,
+        0.037143792935230444,
+        0.03695170440386925,
+        0.03480287577913498,
+        0.03714420369213625
+      ],
+      "per_seed_delayed_exit_count": [
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "per_seed_maximum_drawdown": [
+        0.37795965955049293,
+        0.3763059884811688,
+        0.3921419967531651,
+        0.366335479538215,
+        0.34308194342602694
+      ],
+      "per_seed_mean_return": [
+        6.2888378319407075e-06,
+        -0.00015538444405348447,
+        8.530367894772533e-05,
+        -3.550314002981874e-05,
+        0.000173675882272766
+      ],
+      "per_seed_turnover": [
+        190.27163389410657,
+        210.5852152289801,
+        214.54320151518766,
+        192.35402803885285,
+        198.16678011505746
+      ]
+    },
+    {
+      "cost": 0.005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.0258786799889602,
+      "method": "classical_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.02626280479872103,
+        0.026801632542358917,
+        0.024403098212858097,
+        0.0246802452699313,
+        0.02724561912093166
+      ],
+      "per_seed_delayed_exit_count": [
+        0,
+        26,
+        0,
+        0,
+        0
+      ],
+      "per_seed_maximum_drawdown": [
+        0.1997985096150915,
+        0.1758473715724307,
+        0.11762642355029596,
+        0.13902048409776824,
+        0.1542161589611778
+      ],
+      "per_seed_mean_return": [
+        0.0009053535974495259,
+        0.0006200031155920276,
+        0.0014742723748189352,
+        0.001486252306053211,
+        0.000613082711055191
+      ],
+      "per_seed_turnover": [
+        11.80428758980203,
+        13.391926829232391,
+        14.209283250813595,
+        10.31992835879635,
+        11.012902274813072
+      ]
+    },
+    {
+      "cost": 0.005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03266616885830072,
+      "method": "selected_factor",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.029909605266001893,
+        0.034727939942735236,
+        0.033969636133860275,
+        0.03182996720067106,
+        0.0328936957482351
+      ],
+      "per_seed_delayed_exit_count": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "per_seed_maximum_drawdown": [
+        0.16539460547086016,
+        0.19094688471954713,
+        0.2744863140582514,
+        0.2198820486782912,
+        0.17083814338197678
+      ],
+      "per_seed_mean_return": [
+        0.0010473130563278157,
+        0.00033918733451568026,
+        0.000222935263511954,
+        0.0007283723060701208,
+        0.000926922376037631
+      ],
+      "per_seed_turnover": [
+        53.27894333947488,
+        68.51612064312187,
+        70.55353943452769,
+        51.2856934420841,
+        69.18765016033878
+      ]
+    },
+    {
+      "cost": 0.005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03359324962488534,
+      "method": "selected_shrinkage",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03025972034558395,
+        0.03347588090111941,
+        0.035605152537875155,
+        0.032665009058039325,
+        0.03596048528180884
+      ],
+      "per_seed_delayed_exit_count": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "per_seed_maximum_drawdown": [
+        0.19687137934138266,
+        0.16011160750236197,
+        0.23090694032200143,
+        0.16184950473095805,
+        0.180237136050158
+      ],
+      "per_seed_mean_return": [
+        0.0011223305460589714,
+        0.0008803576812361185,
+        0.0004334190219892223,
+        0.0005295477837799478,
+        0.000598896127307232
+      ],
+      "per_seed_turnover": [
+        52.11855845107835,
+        73.02438064665299,
+        75.49450066893354,
+        48.94366270676507,
+        65.55295612172972
+      ]
+    },
+    {
+      "cost": 0.005,
+      "empirical_tail_mass_per_seed": 24.25,
+      "mean_seed_cvar95": 0.03088673492962577,
+      "method": "selected_readout_risk",
+      "n_calendar_intervals": 485,
+      "per_seed_cvar95": [
+        0.03025142866103525,
+        0.031511340307227846,
+        0.03308833193402989,
+        0.02830059072337629,
+        0.03128198302245959
+      ],
+      "per_seed_delayed_exit_count": [
+        0,
+        26,
+        26,
+        0,
+        26
+      ],
+      "per_seed_maximum_drawdown": [
+        0.2241426002850334,
+        0.15556640746019124,
+        0.3059315324980595,
+        0.15002457852414974,
+        0.1441018684775437
+      ],
+      "per_seed_mean_return": [
+        0.0009612270508390764,
+        0.0009647111957521684,
+        0.00012164551576560653,
+        0.0009724075012946329,
+        0.0010476663694165245
+      ],
+      "per_seed_turnover": [
+        45.23299541912331,
+        59.72255690562454,
+        60.95551121927013,
+        37.29140098904877,
+        59.868330335535305
+      ]
+    }
+  ],
+  "primary_comparisons": [
+    {
+      "block_length": 40,
+      "block_sensitivity": [
+        {
+          "block_length": 20,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            0.005536163350504777,
+            0.014005926530871696
+          ],
+          "effect": 0.00941191823706828,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.0009995002498750624,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        },
+        {
+          "block_length": 80,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            0.006692515690861621,
+            0.012729282477302503
+          ],
+          "effect": 0.00941191823706828,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.0004997501249375312,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        }
+      ],
+      "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        0.005976444309053102,
+        0.013364337180900488
+      ],
+      "comparison": "quantum_mean_vs_classical_mean_cvar",
+      "cost": 0.001,
+      "effect": 0.00941191823706828,
+      "endpoint": "cvar95",
+      "mdd_path_sensitivity": {
+        "block_length": 40,
+        "bootstrap_replicates": 2000,
+        "effect": 0.16933482547379697,
+        "path_bootstrap_interval95": [
+          0.03264791619044722,
+          0.35038323688369843
+        ],
+        "scope": "PATH_SENSITIVITY_WITH_FIXED_INITIAL_ENTRY_COST",
+        "seed_aggregation": "MDD_PER_SEED_THEN_MEAN"
+      },
+      "mean_return_difference": {
+        "block_length": 40,
+        "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+        "bootstrap_replicates": 2000,
+        "ci95": [
+          -0.0014015103320486587,
+          0.0009830425362543733
+        ],
+        "effect": -0.0002648022691868997,
+        "endpoint": "mean",
+        "n_dates": 485,
+        "n_seeds": 5,
+        "p_raw": 0.6676661669165417,
+        "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+        "tail_mass_per_seed": null
+      },
+      "method": "selected_factor",
+      "n_dates": 485,
+      "n_seeds": 5,
+      "p_holm": 0.0014992503748125937,
+      "p_raw": 0.0004997501249375312,
+      "reference": "classical_factor",
+      "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+      "tail_mass_per_seed": 24.25
+    },
+    {
+      "block_length": 40,
+      "block_sensitivity": [
+        {
+          "block_length": 20,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            -0.000403007663147841,
+            0.003713555166210695
+          ],
+          "effect": 0.0014133302458495187,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.191904047976012,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        },
+        {
+          "block_length": 80,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            8.880535221306632e-05,
+            0.0029837485017771737
+          ],
+          "effect": 0.0014133302458495187,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.0559720139930035,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        }
+      ],
+      "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        -0.00016196260269724493,
+        0.0033556580968002324
+      ],
+      "comparison": "factor_vs_shrinkage_cvar",
+      "cost": 0.001,
+      "effect": 0.0014133302458495187,
+      "endpoint": "cvar95",
+      "mdd_path_sensitivity": {
+        "block_length": 40,
+        "bootstrap_replicates": 2000,
+        "effect": 0.015601368982146258,
+        "path_bootstrap_interval95": [
+          -0.0064452631142071035,
+          0.08541738567083357
+        ],
+        "scope": "PATH_SENSITIVITY_WITH_FIXED_INITIAL_ENTRY_COST",
+        "seed_aggregation": "MDD_PER_SEED_THEN_MEAN"
+      },
+      "mean_return_difference": {
+        "block_length": 40,
+        "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+        "bootstrap_replicates": 2000,
+        "ci95": [
+          -0.00040758037465108793,
+          9.548091123774143e-05
+        ],
+        "effect": -0.00015892643323186883,
+        "endpoint": "mean",
+        "n_dates": 485,
+        "n_seeds": 5,
+        "p_raw": 0.19390304847576212,
+        "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+        "tail_mass_per_seed": null
+      },
+      "method": "selected_factor",
+      "n_dates": 485,
+      "n_seeds": 5,
+      "p_holm": 0.24087956021989004,
+      "p_raw": 0.12043978010994502,
+      "reference": "selected_shrinkage",
+      "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+      "tail_mass_per_seed": 24.25
+    },
+    {
+      "block_length": 40,
+      "block_sensitivity": [
+        {
+          "block_length": 20,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            -0.004030903484437567,
+            0.00048090365990352264
+          ],
+          "effect": -0.001580736433903232,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.16941529235382308,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        },
+        {
+          "block_length": 80,
+          "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+          "bootstrap_replicates": 2000,
+          "ci95": [
+            -0.003609394758634343,
+            0.00016378715950256573
+          ],
+          "effect": -0.001580736433903232,
+          "endpoint": "cvar95",
+          "n_dates": 485,
+          "n_seeds": 5,
+          "p_raw": 0.12243878060969515,
+          "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+          "tail_mass_per_seed": 24.25
+        }
+      ],
+      "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+      "bootstrap_replicates": 2000,
+      "ci95": [
+        -0.0038498930129836893,
+        0.0002968481668950205
+      ],
+      "comparison": "quantum_risk_vs_factor_cvar",
+      "cost": 0.001,
+      "effect": -0.001580736433903232,
+      "endpoint": "cvar95",
+      "mdd_path_sensitivity": {
+        "block_length": 40,
+        "bootstrap_replicates": 2000,
+        "effect": -0.027571656960425128,
+        "path_bootstrap_interval95": [
+          -0.04955791565044998,
+          0.06957496070116422
+        ],
+        "scope": "PATH_SENSITIVITY_WITH_FIXED_INITIAL_ENTRY_COST",
+        "seed_aggregation": "MDD_PER_SEED_THEN_MEAN"
+      },
+      "mean_return_difference": {
+        "block_length": 40,
+        "bootstrap": "PAIRED_STATIONARY_TIME_BLOCK",
+        "bootstrap_replicates": 2000,
+        "ci95": [
+          -0.0004984101471842168,
+          0.00016356528525565515
+        ],
+        "effect": -0.00015138303086477292,
+        "endpoint": "mean",
+        "n_dates": 485,
+        "n_seeds": 5,
+        "p_raw": 0.37831084457771114,
+        "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+        "tail_mass_per_seed": null
+      },
+      "method": "selected_readout_risk",
+      "n_dates": 485,
+      "n_seeds": 5,
+      "p_holm": 0.24087956021989004,
+      "p_raw": 0.13793103448275862,
+      "reference": "selected_factor",
+      "seed_aggregation": "ENDPOINT_PER_SEED_THEN_MEAN",
+      "tail_mass_per_seed": 24.25
+    }
+  ],
+  "portfolio_scope": "fractional long-only adjusted-price total-return proxy; daily-volume and strict-open-limit execution proxy",
+  "terminal_scope": "main horizon shared across methods; delayed liquidation tail is reported in each trade ledger",
+  "bootstrap_scope": "stationarity, observed dependence and finite tail mass condition paired stationary-block interpretation",
+  "hardware_calls": 0,
+  "new_quantum_calls": 0,
+  "lambda": 10
+}

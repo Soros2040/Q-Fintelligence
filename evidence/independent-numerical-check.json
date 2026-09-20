@@ -1,0 +1,24 @@
+{
+  "state": "PASS",
+  "experiment_id": "E07",
+  "execution_mode": "OFFLINE_INDEPENDENT_NUMERICAL_RECOMPUTATION",
+  "external_calls": 0,
+  "source_files_sha_checked": 4410,
+  "per_circuit_metrics_recomputed": 31464,
+  "counts_axes_checked": 999,
+  "shots_conserved": {
+    "cloud": 1022976,
+    "hardware": 1022976,
+    "finite": 1022976
+  },
+  "calculation": "Bitstring dictionary probabilities; scalar math.fsum; stable scalar Hellinger norm; bootstrap multiplicity matrix; independent linear percentile interpolation",
+  "scope": "Independent numerical implementation, executed in the same local analysis task",
+  "maximum_absolute_discrepancy": {
+    "per_circuit": 2.220446049250313e-16,
+    "summary_point_estimates": 2.220446049250313e-16,
+    "bootstrap_interval": 5.551115123125783e-16
+  },
+  "tolerance": 1e-11,
+  "source_result_sha256": "230b3285ca3725eb604b8e9f7baf3ffa2a0a00ccc11f0a91517e5fc041807b8e",
+  "evidence_type": "curated archived summary; not a new execution"
+}
