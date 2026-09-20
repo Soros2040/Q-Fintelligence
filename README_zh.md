@@ -11,19 +11,16 @@
 ## 架构概览
 
 ```mermaid
-flowchart LR
-    U[研究者] --> W[Web 工作台]
-    W --> C[控制面]
-    C --> D[SQLite 任务与事件]
-    C --> A[产物存储]
-    C --> F[金融 Worker]
-    C --> Q[量子 Worker]
-    C --> O[可选 OpenHands Sidecar]
-    I[规范化或合成面板] --> P[独立算法 CLI]
-    P --> R[风险与收益估计]
-    R --> B[组合目标与 QUBO]
-    B --> S[线路选择与本地模拟]
-    S --> E[输出与回执]
+flowchart TB
+    subgraph Product[研究工作台]
+      direction LR
+      W[网页界面] --> C[任务控制] --> R[工作进程] --> A[成果文件]
+    end
+    subgraph Algorithm[独立算法 CLI]
+      direction LR
+      D[数据面板] --> M[风险模型] --> P[组合目标] --> Q[线路评价]
+    end
+    Product ~~~ Algorithm
 ```
 
 工作台与算法 CLI 是两个独立入口，集成状态和源码位置见[架构说明](docs/architecture_zh.md)。

@@ -11,19 +11,16 @@ This is an ongoing research project with a deployed product entry and archived e
 ## Architecture at a glance
 
 ```mermaid
-flowchart LR
-    U[Researcher] --> W[Web workbench]
-    W --> C[Control plane]
-    C --> D[SQLite task and event state]
-    C --> A[Artifact store]
-    C --> F[Finance worker]
-    C --> Q[Quantum worker]
-    C --> O[Optional OpenHands sidecar]
-    I[Normalized or synthetic panel] --> P[Independent algorithm CLI]
-    P --> R[Risk and return estimates]
-    R --> B[Portfolio objective and QUBO]
-    B --> S[Circuit selection and local simulation]
-    S --> E[Recorded outputs and receipts]
+flowchart TB
+    subgraph Product[Research workbench]
+      direction LR
+      W[Web interface] --> C[Task control] --> R[Workers] --> A[Artifacts]
+    end
+    subgraph Algorithm[Independent algorithm CLI]
+      direction LR
+      D[Data panel] --> M[Risk model] --> P[Portfolio objective] --> Q[Circuit evaluation]
+    end
+    Product ~~~ Algorithm
 ```
 
 The workbench and algorithm CLI are separate entry points. Their integration status and source locations are described in [Architecture](docs/architecture.md).
